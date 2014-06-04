@@ -1,0 +1,10 @@
+/* This is a Child-theme of Spacious for Wikitoki
+Theme Name:     spacious child
+Theme URI:      
+Description:    Child theme for the Parent theme
+Author:         numeroteca
+Author URI:     http://numeroteca.org
+Template: 			spacious
+Version:        0.1
+*/
+@import url("../spacious/style.css");
