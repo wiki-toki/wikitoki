@@ -106,6 +106,12 @@ function sample_metaboxes( $meta_boxes ) {
 				'id' => $prefixact . 'date-end',
 				'type' => 'text_date'
 			),
+			array(
+				'name' => 'Organizador',
+				'desc' => 'Nombre del grupo o persona organizadora',
+				'id' => $prefixact . 'organizador',
+				'type' => 'text_small'
+			),
 		),
 	);
 	return $meta_boxes;
