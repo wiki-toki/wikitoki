@@ -9,11 +9,11 @@ function create_post_type() {
 			'name' => __( 'Actividades' ),
 			'singular_name' => __( 'Actividad' ),
 			'add_new_item' => __( 'Añadir una actividad' ),
-			'edit' => __( 'Modificar' ),
-			'edit_item' => __( 'Modificar una actividad' ),
+			'edit' => __( 'Editar' ),
+			'edit_item' => __( 'Editar actividad' ),
 			'new_item' => __( 'Nueva actividad' ),
-			'view' => __( 'Ver una actividad' ),
-			'view_item' => __( 'Ver una actividad' ),
+			'view' => __( 'Ver la actividad' ),
+			'view_item' => __( 'Ver la actividad' ),
 			'search_items' => __( 'Buscar una actividad' ),
 			'not_found' => __( 'No se ha encontrado ninguna actividad' ),
 			'not_found_in_trash' => __( 'No se han encontrado actividades en la papelera' ),
@@ -29,7 +29,7 @@ function create_post_type() {
 //		'menu_icon' => get_template_directory_uri() . '/images/icon-post.type-integrantes.png',
 		'hierarchical' => false, // if true this post type will be as pages
 		'query_var' => true,
-		'supports' => array('title', 'editor','excerpt','custom-fields','author','comments','revisions'),
+		'supports' => array('title','editor','excerpt','custom-fields','author','comments','revisions','thumbnail'),
 		//'taxonomies' => array('origine',), TODO
 		'rewrite' => array('slug'=>'actividad','with_front'=>false),
 		'can_export' => true,
@@ -73,7 +73,7 @@ function build_taxonomies() {
 //// CUSTOM METABOXES: Adds new fields for Atividades
 // More info about metabox at https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Basic-Usage
 function sample_metaboxes( $meta_boxes ) {
-	$prefixbio = '_act_'; // Prefix for all fields
+	$prefixact = '_act_'; // Prefix for all fields
 	$meta_boxes[] = array(
 		'id' => 'activiy-info',
 		'title' => 'Información sobre Actividad',
@@ -85,25 +85,25 @@ function sample_metaboxes( $meta_boxes ) {
 			array(
 				'name' => 'Lugar',
 				'desc' => '',
-				'id' => $prefix . 'place',
+				'id' => $prefixact . 'place',
 				'type' => 'text_small'
 			),
 			array(
 				'name' => 'Hora',
-				'desc' => 'Hora a la que ocurre el evento',
-				'id' => $prefix . 'time',
+				'desc' => 'Hora a la que ocurre el evento. Ej: 18.30h',
+				'id' => $prefixact . 'time',
 				'type' => 'text_small'
 			),
 			array(
 				'name' => 'Fecha de inicio',
 				'desc' => 'Seleccion la fecha',
-				'id' => $prefix . 'date-init',
+				'id' => $prefixact . 'date-init',
 				'type' => 'text_date'
 			),
 			array(
 				'name' => 'Fecha final',
 				'desc' => 'Seleccion la fecha',
-				'id' => $prefix . 'date-end',
+				'id' => $prefixact . 'date-end',
 				'type' => 'text_date'
 			),
 		),
