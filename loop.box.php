@@ -8,9 +8,10 @@ $place = get_post_meta( $post_id, '_act_place', true );
 $time = get_post_meta( $post_id, '_act_time', true );
 $dateinit = get_post_meta( $post_id, '_act_date-init', true );
 $dateend = get_post_meta( $post_id, '_act_date-end', true );
+$organizer = get_post_meta( $post_id, '_act_organizador', true );
 ?>
 
-<div style="width:33%;float:left;">
+<div style="width:33%;float:left;height:320px">
 	<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 	<?php if (has_post_thumbnail()) :
 			echo "<div class='size-thumbnail' style='margin:0 0 10px 0;width:200px'>";
@@ -24,13 +25,14 @@ $dateend = get_post_meta( $post_id, '_act_date-end', true );
 		<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 	</h4>
 	<div>
+	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
 		<?php 
-			echo "Lugar: ". $place; 
-			echo " Hora: ". $time; 
-			echo " Fecha: ". $dateinit; 
+			echo $time. " "; 
+			echo $dateinit; 
+			echo "<br> Lugar: ". $place; 
 			echo " Fecha cierre: ". $dateend; 
+			echo "<br>Organizador: ". $organizer;
 		?>
-		<span class="label ">Tipo de actividad: <?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span>
 	</div>
 	<div class="row">
 			<div class="col-md-12">
