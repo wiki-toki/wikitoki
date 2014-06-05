@@ -6,21 +6,42 @@ add_action( 'edit_user_profile', 'extra_user_profile_fields' );
 	function extra_user_profile_fields( $user ) {
  		$extra_fields = array(
 			array(
-				'name' => 'Contacto',
-				'label' => 'contacto'
+				'name' => 'Web (URL) <br>Ej: http://wikitoki.org',
+				'label' => 'web'
+			),
+			array(
+				'name' => 'Feed (rss) <br>Ej: http://wikitoki.org/feed',
+				'label' => 'feed'
+			),
+			array(
+				'name' => 'Twitter <br>Ej: wiki_toki',
+				'label' => 'twitter'
+			),
+			array(
+				'name' => 'Facebook <br>Ej http://facebook.com/wikitoki',
+				'label' => 'facebook'
 			),
 		);
 		$extra_textareas = array(
 			array(
-				'name' => 'Otra info',
-				'label' => 'info',
+				'name' => 'Descripción',
+				'label' => 'description',
 			),
 		);
 	?>
 
-		<h3><?php _e("Informacion", "blank"); ?></h3>
+		<h3><?php _e("Información", "blank"); ?></h3>
 		<table class="form-table">
+	<?php foreach ( $extra_fields as $extra_field ) { ?>	
+		<tr>
+		<th><label for="<?php echo $extra_field['label']; ?>"><?php echo $extra_field['name']; ?></label></th>
+		<td>
+			<input type="text" name="<?php echo $extra_field['label']; ?>" id="<?php echo $extra_field['label']; ?>" value="<?php echo esc_attr( get_the_author_meta( $extra_field['label'], $user->ID ) ); ?>" class="regular-text" /><br />
+		</td>
+		</tr>
 
+	<?php } ?>
+	
 	<?php foreach ( $extra_textareas as $extra_field ) { ?>	
 		<tr>
 		<th><label for="<?php echo $extra_field['label']; ?>"><?php echo $extra_field['name']; ?></label></th>
@@ -33,20 +54,6 @@ add_action( 'edit_user_profile', 'extra_user_profile_fields' );
 
 		</table>
 
-		<h3><?php _e("Contacto", "blank"); ?></h3>
-		<table class="form-table">
-
-	<?php foreach ( $extra_fields as $extra_field ) { ?>	
-		<tr>
-		<th><label for="<?php echo $extra_field['label']; ?>"><?php echo $extra_field['name']; ?></label></th>
-		<td>
-			<input type="text" name="<?php echo $extra_field['label']; ?>" id="<?php echo $extra_field['label']; ?>" value="<?php echo esc_attr( get_the_author_meta( $extra_field['label'], $user->ID ) ); ?>" class="regular-text" /><br />
-		</td>
-		</tr>
-
-	<?php } ?>
-
-		</table>
 <?php }
 
 add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
@@ -57,12 +64,20 @@ function save_extra_user_profile_fields( $user_id ) {
 	if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
  		$extra_fields = array(
 			array(
-				'name' => 'Contacto',
-				'label' => 'contacto'
+				'name' => 'Web (URL) <br>Ej: http://wikitoki.org',
+				'label' => 'web'
 			),
 			array(
-				'name' => 'Otra info',
-				'label' => 'info',
+				'name' => 'Feed (rss) <br>Ej: http://wikitoki.org/feed',
+				'label' => 'feed'
+			),
+			array(
+				'name' => 'Twitter <br>Ej: wiki_toki',
+				'label' => 'twitter'
+			),
+			array(
+				'name' => 'Facebook <br>Ej http://facebook.com/wikitoki',
+				'label' => 'facebook'
 			),
 		);
 
