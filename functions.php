@@ -3,7 +3,7 @@
 add_action( 'init', 'create_post_type', 0 );
 
 function create_post_type() {
-	// PRODUCT
+	// ACTIVIDAD
 	register_post_type( 'actividad', array(
 		'labels' => array(
 			'name' => __( 'Actividades' ),
@@ -40,6 +40,37 @@ function create_post_type() {
 	));
 }
 
+// Custom Taxonomies
+add_action( 'init', 'build_taxonomies', 0 );
+
+function build_taxonomies() {
+	// TIPO DE ACTIVIDAD
+	register_taxonomy( 'tipo-actividad', array('actividad'), array(
+		'labels' => array(
+			'name' => _x( 'Tipos de actividad','taxonomy general name' ),
+			'singular_name' => _x( 'Tipo de actividad','taxonomy general name' ),
+			'search_items' => __( 'Busca tipo de actividad' ),
+			'popular_items' => __( 'Tipos de actividad populares' ),
+			'all_items' => __( 'Todos los tipos de actividad' ),
+			'parent_item' => __( 'Actividad tipo padre' ),
+			'edit_item' => __( 'Modifica el tipo de actividad' ),
+			'update_item' => __( 'Actualiza el tipo de actividad' ),
+			'add_new_item' => __( 'Añade tipo de actividad' ),
+			'new_item_name' => __( 'Nuevo nombre del tipo de actividad' ),
+//			'separate_items_with_commas' => __( 'Separate tags with commas' ),
+//			'add_or_remove_items' => __( 'Add or remove tags' ),
+//			'choose_from_most_used' => __( 'Choose from the most used tags' ),
+//			'menu_name' =>
+		),
+		'public' => true,
+		'hierarchical' => true,
+		'update_count_callback' => true,
+		'query_var' => true,
+		'rewrite' => array('slug'=>'tipo-actividad','with_front'=>false,'hierarchical'=>true)
+	));
+}
+
+//// USER
 // extra fields in user profile
 add_action( 'show_user_profile', 'extra_user_profile_fields' );
 add_action( 'edit_user_profile', 'extra_user_profile_fields' );
