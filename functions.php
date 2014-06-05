@@ -70,6 +70,56 @@ function build_taxonomies() {
 	));
 }
 
+//// CUSTOM METABOXES: Adds new fields for Atividades
+// More info about metabox at https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress/wiki/Basic-Usage
+function sample_metaboxes( $meta_boxes ) {
+	$prefixbio = '_act_'; // Prefix for all fields
+	$meta_boxes[] = array(
+		'id' => 'activiy-info',
+		'title' => 'Información sobre Actividad',
+		'pages' => array('actividad'), // post type
+		'context' => 'normal',
+		'priority' => 'high',
+		'show_names' => true, // Show field names on the left
+		'fields' => array(
+			array(
+				'name' => 'Lugar',
+				'desc' => '',
+				'id' => $prefix . 'place',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Hora',
+				'desc' => 'Hora a la que ocurre el evento',
+				'id' => $prefix . 'time',
+				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Fecha de inicio',
+				'desc' => 'Seleccion la fecha',
+				'id' => $prefix . 'date-init',
+				'type' => 'text_date'
+			),
+			array(
+				'name' => 'Fecha final',
+				'desc' => 'Seleccion la fecha',
+				'id' => $prefix . 'date-end',
+				'type' => 'text_date'
+			),
+		),
+	);
+	return $meta_boxes;
+}
+add_filter( 'cmb_meta_boxes', 'sample_metaboxes' );
+
+// Initialize the metabox class
+add_action( 'init', 'initialize_cmb_meta_boxes', 9999 );
+function initialize_cmb_meta_boxes() {
+	if ( !class_exists( 'cmb_Meta_Box' ) ) {
+		require_once( 'lib/metabox/init.php' );
+	}
+}
+
 //// USER
 // extra fields in user profile
 add_action( 'show_user_profile', 'extra_user_profile_fields' );
