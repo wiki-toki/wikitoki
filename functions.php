@@ -1,4 +1,45 @@
-<?php 
+<?php
+// custom post types
+add_action( 'init', 'create_post_type', 0 );
+
+function create_post_type() {
+	// PRODUCT
+	register_post_type( 'actividad', array(
+		'labels' => array(
+			'name' => __( 'Actividades' ),
+			'singular_name' => __( 'Actividad' ),
+			'add_new_item' => __( 'Añadir una actividad' ),
+			'edit' => __( 'Modificar' ),
+			'edit_item' => __( 'Modificar una actividad' ),
+			'new_item' => __( 'Nueva actividad' ),
+			'view' => __( 'Ver una actividad' ),
+			'view_item' => __( 'Ver una actividad' ),
+			'search_items' => __( 'Buscar una actividad' ),
+			'not_found' => __( 'No se ha encontrado ninguna actividad' ),
+			'not_found_in_trash' => __( 'No se han encontrado actividades en la papelera' ),
+			'parent' => __( 'Parent' )
+		),
+		'public' => true,
+		'publicly_queryable' => true,
+		'exclude_from_search' => false,
+		'show_ui' => true,
+		'menu_position' => 4,
+		'show_in_nav_menus' => true,
+		'has_archive' => true,
+//		'menu_icon' => get_template_directory_uri() . '/images/icon-post.type-integrantes.png',
+		'hierarchical' => false, // if true this post type will be as pages
+		'query_var' => true,
+		'supports' => array('title', 'editor','excerpt','custom-fields','author','comments','revisions'),
+		//'taxonomies' => array('origine',), TODO
+		'rewrite' => array('slug'=>'actividad','with_front'=>false),
+		'can_export' => true,
+//		'_builtin' => false,
+//		'_edit_link' => 'post.php?post=%d',
+//		'map_meta_cap' => true, // should be true to make capability_type works
+//		'capability_type' => 'page',
+	));
+}
+
 // extra fields in user profile
 add_action( 'show_user_profile', 'extra_user_profile_fields' );
 add_action( 'edit_user_profile', 'extra_user_profile_fields' );
