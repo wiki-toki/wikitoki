@@ -8,3 +8,8 @@ Template: 			spacious
 Version:        0.1
 */
 @import url("../spacious/style.css");
+
+.avatar {
+    border-radius: 0;
+    float: none;
+}
