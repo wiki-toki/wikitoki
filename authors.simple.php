@@ -25,7 +25,7 @@ foreach ( $authors as $auth ) {
 	$desc = nl2br($author_meta['description']);
 	$feed = $author_meta['feed'];
 	?>
-	
+	<?php echo get_wp_user_avatar($author_ID, 40); ?>
 	<h2><a href="<?php echo get_author_posts_url( $author_ID); ?>"><?php echo $auth_username ?></a></h2>
 	<p>
 		Web: <a href="<?php echo $author->user_url; ?>"><?php echo $author->user_url; ?></a><br>

@@ -17,7 +17,7 @@
 			$twitter = $author_meta['twitter'];
 			$facebook = $author_meta['facebook'];
 			?>
-
+			<?php echo get_wp_user_avatar($author_ID, 150); ?>
 			<h2>Sobre: <?php echo $curauth->nickname; ?></h2>
 			<dl>
 					<dt>Website</dt>
