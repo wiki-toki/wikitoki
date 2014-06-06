@@ -10,6 +10,13 @@ $args = array(
 	'number' => $users_per_page,
 );
 
+//Query users by taxonomy user-type that is Colectivo
+$tax_slug = "user-type";
+$term_slug = 'colectivo';
+$term_object = get_term_by('slug',$term_slug,$tax_slug);
+$userids = get_objects_in_term( $term_object->term_id, $tax_slug );
+$args['include'] = $userids;
+
 $wp_user_query = new WP_User_Query($args);
 
 $authors = $wp_user_query->get_results();
