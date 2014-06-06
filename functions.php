@@ -228,6 +228,37 @@ function build_user_taxonomies() {
 	//	'update_count_callback' => 'my_update_professionnel_count', // Use a custom function to update the count. TODO
 //		'query_var' => true,
 		'rewrite' => array('slug'=>'user-type','with_front'=>false,'hierarchical'=>true),
+		'capabilities' => array(
+			'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
+			'edit_terms'   => 'edit_users',
+			'delete_terms' => 'edit_users',
+			'assign_terms' => 'read',
+		),
+	));
+	// Usuario al que pertenece
+	register_taxonomy( 'user-group', 'user', array(
+		'labels' => array(
+			'name' => _x( 'Grupos','taxonomy general name' ),
+			'singular_name' => _x( 'Grupo','taxonomy general name' ),
+			'search_items' => __( 'Busca entre los grupos' ),
+			'popular_items' => __( 'Grupos populares' ),
+			'all_items' => __( 'Todos los grupos' ),
+			'parent_item' => __( 'Grupo padre' ),
+			'edit_item' => __( 'Editar grupo' ),
+			'update_item' => __( 'Actualizar' ),
+			'add_new_item' => __( 'Añadir nuevo grupo' ),
+			'new_item_name' => __( 'Nuevo tipo de grupo' ),
+//			'separate_items_with_commas' => __( 'Separate tags with commas' ),
+//			'add_or_remove_items' => __( 'Add or remove tags' ),
+//			'choose_from_most_used' => __( 'Choose from the most used tags' ),
+//			'menu_name' =>
+		),
+		'public' => true,
+		'hierarchical' => true,
+	//	'update_count_callback' => 'my_update_professionnel_count', // Use a custom function to update the count. TODO
+//		'query_var' => true,
+		'rewrite' => array('slug'=>'user-group','with_front'=>false,'hierarchical'=>true),
+		'capabilities' => array(
 			'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
 			'edit_terms'   => 'edit_users',
 			'delete_terms' => 'edit_users',
@@ -238,6 +269,7 @@ function build_user_taxonomies() {
 
 /* Adds user taxonomies page in the admin. */
 add_action( 'admin_menu', 'my_add_user_type_admin_page' );
+add_action( 'admin_menu', 'my_add_user_group_admin_page' );
 
 
 /**
@@ -258,6 +290,18 @@ function my_add_user_type_admin_page() {
 	);
 }
 
+function my_add_user_group_admin_page() {
+
+	$tax = get_taxonomy( 'user-group' );
+
+	add_users_page(
+		esc_attr( $tax->labels->menu_name ),
+		esc_attr( $tax->labels->menu_name ),
+		$tax->cap->manage_terms,
+		'edit-tags.php?taxonomy=' . $tax->name
+	);
+}
+
 /* Open the right admin menu when clicking in user taxonomies: Professionnel, Secteur, Lieu */
 add_filter( 'parent_file', 'fix_user_tax_page' );
 
@@ -267,13 +311,18 @@ function fix_user_tax_page( $parent_file = '' ) {
 	if ( ! empty( $_GET[ 'taxonomy' ] ) && $_GET[ 'taxonomy' ] == 'user-type' && $pagenow == 'edit-tags.php' ) {
 		$parent_file = 'users.php';
 	}
-
+	if ( ! empty( $_GET[ 'taxonomy' ] ) && $_GET[ 'taxonomy' ] == 'user-group' && $pagenow == 'edit-tags.php' ) {
+		$parent_file = 'users.php';
+	}
+	
 	return $parent_file;
 }
 
 /* Add section to the edit user page in the admin to select profession, secteur or lieu */
 add_action( 'show_user_profile', 'my_edit_user_type_section' );
 add_action( 'edit_user_profile', 'my_edit_user_type_section' );
+add_action( 'show_user_profile', 'my_edit_user_group_section' );
+add_action( 'edit_user_profile', 'my_edit_user_group_section' );
 
 /**
  * Adds an additional settings section on the edit user/profile page in the admin.  This section allows users to 
@@ -282,7 +331,7 @@ add_action( 'edit_user_profile', 'my_edit_user_type_section' );
  * @param object $user The user object currently being edited.
  */
 
-// professionnel
+// user type
 function my_edit_user_type_section( $user ) {
 
 	$tax = get_taxonomy( 'user-type' );
@@ -316,9 +365,45 @@ function my_edit_user_type_section( $user ) {
 	</table>
 <?php }
 
+// user group
+function my_edit_user_group_section( $user ) {
+
+	$tax = get_taxonomy( 'user-group' );
+
+	/* Make sure the user can assign terms of the profession taxonomy before proceeding. */
+	if ( !current_user_can( $tax->cap->assign_terms ) )
+		return;
+
+	/* Get the terms of the 'profession' taxonomy. */
+	$terms = get_terms( 'user-group', array( 'hide_empty' => false ) ); ?>
+
+	<h3><?php _e( 'Grupo al que pertenece el usuario' ); ?></h3>
+	<table class="form-table">
+		<tr>
+			<th><label for="user-group"><?php _e( 'Elige uno de los grupos' ); ?></label></th>
+			<td>
+				<fieldset id="user-group">
+			<?php
+			/* If there are any profession terms, loop through them and display checkboxes. */
+			if ( !empty( $terms ) ) {
+				foreach ( $terms as $term ) { ?>
+					<input type="checkbox" name="user-group-<?php echo esc_attr( $term->slug ); ?>" id="user-group-<?php echo esc_attr( $term->slug ); ?>" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( true, is_object_in_term( $user->ID, 'user-group', $term->slug ) ); ?> /> <label for="user-group-<?php echo esc_attr( $term->slug ); ?>"><?php echo $term->name; ?></label> <br />
+				<?php }
+			}
+			/* If there are no profession terms, display a message. */
+			else {
+				_e( 'No hay grupos de usuario.' );
+			}
+			?></fieldset></td>
+		</tr>
+	</table>
+<?php }
+
 /* Update the profession terms when the edit user page is updated. */
 add_action( 'personal_options_update', 'my_save_user_type_terms' );
 add_action( 'edit_user_profile_update', 'my_save_user_type_terms' );
+add_action( 'personal_options_update', 'my_save_user_group_terms' );
+add_action( 'edit_user_profile_update', 'my_save_user_group_terms' );
 
 /**
  * Saves the term selected on the edit user/profile page in the admin. This function is triggered when the page 
@@ -327,7 +412,7 @@ add_action( 'edit_user_profile_update', 'my_save_user_type_terms' );
  * @param int $user_id The ID of the user to save the terms for.
  */
 
-// professionnel
+// user type
 function my_save_user_type_terms( $user_id ) {
 
 	$tax = get_taxonomy( 'user-type' );
@@ -347,4 +432,26 @@ function my_save_user_type_terms( $user_id ) {
 	wp_set_object_terms( $user_id, $add_terms, 'user-type', false);
 
 	clean_object_term_cache( $user_id, 'user-type' );
+}
+
+// user group
+function my_save_user_group_terms( $user_id ) {
+
+	$tax = get_taxonomy( 'user-group' );
+
+	/* Make sure the current user can edit the user and assign terms before proceeding. */
+	if ( !current_user_can( 'edit_user', $user_id ) && current_user_can( $tax->cap->assign_terms ) )
+		return false;
+
+	$terms = get_terms('user-group','hide_empty=0');
+	$add_terms = array();
+	foreach ( $terms as $term ) {
+		$toadd = esc_attr( $_POST['user-group-' .$term->slug] );
+		if ( $toadd != '' ) { array_push($add_terms, $term->slug); }
+	}
+
+	/* Sets the terms (we're just using a single term) for the user. */
+	wp_set_object_terms( $user_id, $add_terms, 'user-group', false);
+
+	clean_object_term_cache( $user_id, 'user-group' );
 }

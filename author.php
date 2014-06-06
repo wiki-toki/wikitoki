@@ -9,6 +9,7 @@
 			<?php
 			$curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : get_userdata(intval($author));
 			$author_ID = $curauth->ID;
+			$user_login = $curauth->user_login;
 			$author_meta = array_map( function( $a ){ return $a[0]; }, get_user_meta( $author_ID ) );
 			//print_r ($author_meta);
 			$tit = $author_meta['first_name'];
@@ -47,7 +48,53 @@
 			<?php endif; ?>
 			<!-- End Loop -->
 			</ul>
+			
+			<?php
+			//Displays groups where the user belongs
+			//gets the terms in the user-group taxonomy
+			//Only displays information if user belongs to a group
+			$user_groups = wp_get_object_terms($author_ID, 'user-group');
+			if(!empty($user_groups) && !is_wp_error( $user_groups )){
+					echo "<h2>Grupos a los que pertenece</h2>";
+					echo '<ul>';
+					foreach($user_groups as $user_group){
+						echo '<li><a href="">'.$user_group->name.'</a></li>';//TODO fix link url
+					}
+					echo '</ul>';
+			}
+			?>
 
+			<?php
+			//Lists all the users that have the slug of this user we are displaying now as taxonomy user-group
+			$args = '';
+			$tax_slug = "user-group";
+			$term_slug = $user_login; //uses the user_login of the user as term of the taxonomy
+			$term_object = get_term_by('slug',$term_slug,$tax_slug);
+			
+			if(!empty($term_object)){ //checks if there is no term for that taxonomy
+				$userids = get_objects_in_term( $term_object->term_id, $tax_slug );
+				$args['include'] = $userids;
+				$wp_user_query = new WP_User_Query($args);
+				$authors = $wp_user_query->get_results();
+				
+				if(!empty($authors) && !is_wp_error( $authors)){
+					echo "<h2>Personas que pertenecen a este grupo</h2>";
+					foreach ( $authors as $auth ) {
+						$author_ID = $auth->ID;
+						$author_meta = array_map( function( $a ){ return $a[0]; }, get_user_meta( $author_ID ) );
+						$author = get_userdata($author_ID); //array with all the user data
+						$auth_username = $author->user_nicename;
+						?>
+						<div>
+							<div style="float:left;margin:10px"><?php echo get_wp_user_avatar($author_ID, 40); ?></div>
+							<h4><a href="<?php echo get_author_posts_url( $author_ID); ?>"><?php echo $auth_username ?></a></h4>
+						</div>
+						<hr>
+					<?php
+					}
+				}
+			}
+			?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 	
