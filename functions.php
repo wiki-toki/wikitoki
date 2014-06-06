@@ -150,12 +150,6 @@ add_action( 'edit_user_profile', 'extra_user_profile_fields' );
 				'label' => 'facebook'
 			),
 		);
-		$extra_textareas = array(
-			array(
-				'name' => 'Descripción',
-				'label' => 'description',
-			),
-		);
 	?>
 
 		<h3><?php _e("Información", "blank"); ?></h3>
@@ -170,15 +164,6 @@ add_action( 'edit_user_profile', 'extra_user_profile_fields' );
 
 	<?php } ?>
 	
-	<?php foreach ( $extra_textareas as $extra_field ) { ?>	
-		<tr>
-		<th><label for="<?php echo $extra_field['label']; ?>"><?php echo $extra_field['name']; ?></label></th>
-		<td>
-			<textarea name="<?php echo $extra_field['label']; ?>" id="<?php echo $extra_field['label']; ?>" rows="5" cols="30"><?php echo esc_attr( get_the_author_meta( $extra_field['label'], $user->ID ) ); ?></textarea><br />
-		</td>
-		</tr>
-
-	<?php } ?>
 
 		</table>
 
@@ -220,7 +205,7 @@ function save_extra_user_profile_fields( $user_id ) {
 add_action( 'init', 'build_user_taxonomies', 0 );
 
 function build_user_taxonomies() {
-	// 
+	// Tipo de usuario
 	register_taxonomy( 'user-type', 'user', array(
 		'labels' => array(
 			'name' => _x( 'Tipos de usuario','taxonomy general name' ),
@@ -229,7 +214,7 @@ function build_user_taxonomies() {
 			'popular_items' => __( 'Tipos de usuario populares' ),
 			'all_items' => __( 'Todos los tipos de usuario' ),
 			'parent_item' => __( 'Tipo de usuario padre' ),
-			'edit_item' => __( 'Modificar tipo de usuario' ),
+			'edit_item' => __( 'Editar tipo de usuario' ),
 			'update_item' => __( 'Actualizar' ),
 			'add_new_item' => __( 'Añadir nuevo tipo de usuario' ),
 			'new_item_name' => __( 'nuevo tipo de usuario' ),
@@ -242,8 +227,7 @@ function build_user_taxonomies() {
 		'hierarchical' => true,
 	//	'update_count_callback' => 'my_update_professionnel_count', // Use a custom function to update the count. TODO
 //		'query_var' => true,
-		'rewrite' => array('slug'=>'pro','with_front'=>false,'hierarchical'=>true),
-		'capabilities' => array(
+		'rewrite' => array('slug'=>'user-type','with_front'=>false,'hierarchical'=>true),
 			'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
 			'edit_terms'   => 'edit_users',
 			'delete_terms' => 'edit_users',
