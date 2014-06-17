@@ -55,10 +55,12 @@
 			//Only displays information if user belongs to a group
 			$user_groups = wp_get_object_terms($author_ID, 'user-group');
 			if(!empty($user_groups) && !is_wp_error( $user_groups )){
+					
 					echo "<h2>Grupos a los que pertenece</h2>";
 					echo '<ul>';
 					foreach($user_groups as $user_group){
-						echo '<li><a href="">'.$user_group->name.'</a></li>';//TODO fix link url
+						$usergroup_slug = strtolower (str_replace(" ","-",$user_group->name));
+						echo '<li><a href="/author/'.$usergroup_slug.'">'.$user_group->name.'</a></li>'; //TODO it would be better to dynamically generate the link (not hardcode ur)
 					}
 					echo '</ul>';
 			}
