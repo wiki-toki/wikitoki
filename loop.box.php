@@ -25,7 +25,7 @@ $organizer = get_post_meta( $post_id, '_act_organizador', true );
 		<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 	</h4>
 	<div>
-	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
+		<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
 		<?php 
 			echo $time. " "; 
 			echo $dateinit; 

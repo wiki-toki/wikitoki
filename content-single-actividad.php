@@ -19,13 +19,15 @@ $organizer = get_post_meta( $post_id, '_act_organizador', true );
 	<?php do_action( 'spacious_before_post_content' ); ?>
 	<div class="entry-content clearfix">
 		<div>
-		<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
+		<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br><br>
 		<?php
-			echo $time. " ";
-			echo $dateinit;
+			echo "<strong>Datos de la actividad</strong><br>";
+			echo "Qu&eacute;: ".get_the_title()."<br>";
+			echo "Hora: ".$time."<br>";
+			echo "Cu&aacute;ndo: ".$dateinit;
 			echo "<br>Lugar: ". $place;
-			echo "<br>Fecha cierre: ". $dateend;
-			echo "<br>Organizador: ". $organizer."<br>";
+			if (!empty($dateend)) {echo "<br>Fecha cierre: ". $dateend;}
+			echo "<br>Organiza: ". $organizer."<br><br>";
 		?>
 		</div>
 		<?php
