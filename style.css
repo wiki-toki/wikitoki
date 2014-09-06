@@ -13,3 +13,27 @@ Version:        0.1
     border-radius: 0;
     float: none;
 }
+.type-actividad img {
+margin:0 0 0 0;
+}
+.row {
+    clear: both;
+    height:450px;
+}
+.row:after {
+    clear: both;
+}
+.row:after {
+    clear: both;
+}
+.row:before, .row:after {
+    display: table;
+    content: " ";
+}
+.row:before, .row:after {
+    display: table;
+    content: " ";
+}
+.box {
+width:33%;float:left;height:320px;position: relative;margin-bottom: 12px;
+}

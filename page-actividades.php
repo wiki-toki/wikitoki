@@ -49,10 +49,10 @@
 					<?php global $wp_query;
 					$wp_query->in_the_loop = true;
 					?>		
-						<div id="post-<?php the_ID(); ?>" <?php post_class('col-md-4'); ?>	>
+						<div id="post-<?php the_ID(); ?>" <?php post_class('box col-md-4'); ?>>
 							<?php include("loop.box.php")?>
 						</div>
-					<?php if ( $count == 3 ) { echo "</div><!-- .row --><hr>"; $count = 0; }?>
+					<?php if ( $count == 3 ) { echo "</div><!-- .row -->"; $count = 0; }?>
 					<?php endwhile; else: ?>
 					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
