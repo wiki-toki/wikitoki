@@ -13,7 +13,7 @@ $organizer = get_post_meta( $post_id, '_act_organizador', true );
 
 <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
 <?php if (has_post_thumbnail()) :
-		echo "<div class='size-thumbnail' style='margin:0 0 10px 0;width:200px'>";
+		echo "<div class='size-thumbnail' style='margin:0 0 10px 0;'>";
 		the_post_thumbnail( 'thumbnail', array('class' => 'img-responsive') );
 		echo "</div>";
 	else:
@@ -34,8 +34,6 @@ $organizer = get_post_meta( $post_id, '_act_organizador', true );
 		echo "<br>Organiza: ". $organizer."<br><br>";
 	?>
 </div>
-<div class="row">
-		<div class="col-md-12">
 		<?php
 			if($categories){
 				foreach($categories as $category) {
@@ -44,5 +42,3 @@ $organizer = get_post_meta( $post_id, '_act_organizador', true );
 			echo trim($output, $separator);
 			}	
 		?>
-	</div>
-</div>
