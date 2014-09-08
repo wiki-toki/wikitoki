@@ -35,5 +35,12 @@ margin:0 0 0 0;
     content: " ";
 }
 .box {
-width:33%;float:left;height:320px;position: relative;margin-bottom: 12px;
+	width:33%;
+	float:left;
+	height:320px;
+	position:relative;
+	margin-bottom: 12px;
+}
+#actividades h4, .actividad h4 {
+	padding-bottom: 0	;
 }
