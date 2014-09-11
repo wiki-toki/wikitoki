@@ -64,6 +64,26 @@ function build_taxonomies() {
 		'query_var' => true,
 		'rewrite' => array('slug'=>'tipo-actividad','with_front'=>false,'hierarchical'=>true)
 	));
+	// ESCALA DE ACTIVIDAD
+	register_taxonomy( 'escala-actividad', array('actividad'), array(
+		'labels' => array(
+			'name' => _x( 'Escalas de actividad','taxonomy general name' ),
+			'singular_name' => _x( 'Escala de actividad','taxonomy general name' ),
+			'search_items' => __( 'Busca escala de actividad' ),
+			'popular_items' => __( 'escala de actividad populares' ),
+			'all_items' => __( 'Todas las escalas de actividad' ),
+			'parent_item' => __( 'Escala tipo madre' ),
+			'edit_item' => __( 'Modifica la escala de actividad' ),
+			'update_item' => __( 'Actualiza la escala de actividad' ),
+			'add_new_item' => __( 'Añade la escala de actividad' ),
+			'new_item_name' => __( 'Nuevo nombre del tipo de actividad' ),
+		),
+		'public' => true,
+		'hierarchical' => true,
+		'update_count_callback' => true,
+		'query_var' => true,
+		'rewrite' => array('slug'=>'escala-actividad','with_front'=>false,'hierarchical'=>true)
+	));
 }
 
 //// CUSTOM METABOXES: Adds new fields for Atividades
@@ -88,7 +108,7 @@ function sample_metaboxes( $meta_boxes ) {
 				'name' => 'Hora',
 				'desc' => 'Hora a la que ocurre el evento. Ej: 18.30h',
 				'id' => $prefixact . 'time',
-				'type' => 'text_small'
+				'type' => 'text_small',
 			),
 			array(
 				'name' => 'Fecha de inicio',
@@ -100,7 +120,7 @@ function sample_metaboxes( $meta_boxes ) {
 				'name' => 'Fecha final',
 				'desc' => 'Seleccion la fecha',
 				'id' => $prefixact . 'date-end',
-				'type' => 'text_date'
+				'type' => 'text_date',
 			),
 			array(
 				'name' => 'Organizador',
@@ -138,7 +158,7 @@ function sample_metaboxes( $meta_boxes ) {
 			array(
 				'name' => __( 'Relación con el barrio','montera34' ),
 				'desc' => 'Escribe un párrafo',
-				'id' => $prefixact . 'relacio-barrio',
+				'id' => $prefixact . 'relacion-barrio',
 				'type' => 'wysiwyg',
 				'options' => array(
 					'textarea_rows' => get_option('default_post_edit_rows', 4),
