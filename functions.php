@@ -57,10 +57,6 @@ function build_taxonomies() {
 			'update_item' => __( 'Actualiza el tipo de actividad' ),
 			'add_new_item' => __( 'Añade tipo de actividad' ),
 			'new_item_name' => __( 'Nuevo nombre del tipo de actividad' ),
-//			'separate_items_with_commas' => __( 'Separate tags with commas' ),
-//			'add_or_remove_items' => __( 'Add or remove tags' ),
-//			'choose_from_most_used' => __( 'Choose from the most used tags' ),
-//			'menu_name' =>
 		),
 		'public' => true,
 		'hierarchical' => true,
@@ -111,6 +107,51 @@ function sample_metaboxes( $meta_boxes ) {
 				'desc' => 'Nombre del grupo o persona organizadora',
 				'id' => $prefixact . 'organizador',
 				'type' => 'text_small'
+			),
+			array(
+				'name' => 'Número de asistentes',
+				'desc' => 'Ejempo: 12',
+				'id' => $prefixact . 'numero-asistentes',
+				'type' => 'text_small'
+			),
+			array(
+				'id' => $prefixact . 'mas_info_url',
+				'type' => 'group',
+				'desc' => 'Más información URL',
+				'options' => array('group_title' => 'Más información'),
+				'fields' => array(
+					array(
+						'name' => __( 'Texto del link','spacious-child' ),
+						'id'   => 'url_text',
+						'type' => 'text',
+						'desc' => 'Texto del link, tipo: Más fotos, Párrafo con más información',
+					),
+					array(
+						'name' => 'URL',
+						'id'   => 'url',
+						'type' => 'text_url',
+						'protocols' => array( 'http', 'https' ),
+						'desc' => 'URL del link: http://zaramari.com/el-taller-del-mapa',
+					),
+				),
+			),
+			array(
+				'name' => __( 'Relación con el barrio','montera34' ),
+				'desc' => 'Escribe un párrafo',
+				'id' => $prefixact . 'relacio-barrio',
+				'type' => 'wysiwyg',
+				'options' => array(
+					'textarea_rows' => get_option('default_post_edit_rows', 4),
+				)
+			),
+			array(
+				'name' => __( 'Qué relación las actividades ha tenido con temas promovidos por el Ayuntamiento','montera34' ),
+				'desc' => 'Escribe un párrafo',
+				'id' => $prefixact . 'relacion-ayuntamiento',
+				'type' => 'wysiwyg',
+				'options' => array(
+					'textarea_rows' => get_option('default_post_edit_rows', 4),
+				)
 			),
 		),
 	);
