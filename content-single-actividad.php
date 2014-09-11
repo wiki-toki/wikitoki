@@ -25,21 +25,18 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 	<?php do_action( 'spacious_before_post_content' ); ?>
 	<div class="entry-content clearfix">
 		<div>
-		<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br><br>
-		<?php
-			echo "<p><strong>Datos de la actividad</strong><br>";
-			if ( $tit!= '' ) echo "Qu&eacute;: ".$tit."<br>";
-			if ( $place != '' ) echo "Lugar: ". $place."<br>";
-			if ( $time != '' ) echo "Hora: ".$time."<br>";
-			if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format )."<br>";
-			if (!empty($dateend)) {echo "Fecha cierre: ".date( 'd/M/Y', $dateend_format )."<br>";}
-			echo "Organiza: ". $organizer."<br>";
-			if ( $numero_asistentes != '' ) echo "N&uacute;mero de asistentes: ".$numero_asistentes."<br>";
-			echo "</p>";
-		?>
-		
-		
-		
+			<?php
+				echo "<p><strong>Datos de la actividad</strong><br>";
+				if ( $tit!= '' ) echo "Qu&eacute;: ".$tit."<br>";
+				if ( $place != '' ) echo "Lugar: ". $place."<br>";
+				if ( $time != '' ) echo "Hora: ".$time."<br>";
+				if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format )."<br>";
+				if ($dateend!= '') echo "Fecha cierre: ".date( 'd/M/Y', $dateend_format )."<br>";
+				echo "Tipo: ". get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' )."<br>";
+				echo "Organiza: ". $organizer."<br>";
+				if ( $numero_asistentes != '' ) echo "N&uacute;mero de asistentes: ".$numero_asistentes."<br>";
+				echo "</p>";
+			?>
 		</div>
 		<?php
 			the_content();
