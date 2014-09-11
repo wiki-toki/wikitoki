@@ -4,11 +4,13 @@ $separator = '&nbsp;';
 $output = '';
 $post_id = $post->ID;
 
-$place = get_post_meta( $post_id, '_act_place', true );
-$time = get_post_meta( $post_id, '_act_time', true );
-$dateinit = get_post_meta( $post_id, '_act_date-init', true );
-$dateend = get_post_meta( $post_id, '_act_date-end', true );
-$organizer = get_post_meta( $post_id, '_act_organizador', true );
+$prefixact = '_act_';
+$tit = get_the_title();
+$place = get_post_meta( $post_id, $prefixact.'place', true );
+$time = get_post_meta( $post_id, $prefixact.'time', true );
+$dateinit = get_post_meta( $post_id, $prefixact.'date-init', true );
+$dateinit_format = strtotime($dateinit);
+$organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 $post_excerpt = get_the_excerpt();
 ?>
 
@@ -26,7 +28,7 @@ $post_excerpt = get_the_excerpt();
 </h4>
 <div>
 	<?php
-		echo $dateinit;
+		echo date( 'd/M/Y', $dateinit_format );
 		echo " ". $organizer."<br>";
 		echo $post_excerpt;
 	?>

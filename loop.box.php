@@ -4,11 +4,13 @@ $separator = '&nbsp;';
 $output = '';
 $post_id = $post->ID;
 
-$place = get_post_meta( $post_id, '_act_place', true );
-$time = get_post_meta( $post_id, '_act_time', true );
-$dateinit = get_post_meta( $post_id, '_act_date-init', true );
-$dateend = get_post_meta( $post_id, '_act_date-end', true );
-$organizer = get_post_meta( $post_id, '_act_organizador', true );
+$prefixact = '_act_';
+$tit = get_the_title();
+$place = get_post_meta( $post_id, $prefixact.'place', true );
+$time = get_post_meta( $post_id, $prefixact.'time', true );
+$dateinit = get_post_meta( $post_id, $prefixact.'date-init', true );
+$dateinit_format = strtotime($dateinit);
+$organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 ?>
 
 <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
@@ -26,9 +28,9 @@ $organizer = get_post_meta( $post_id, '_act_organizador', true );
 <div>
 	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
 	<?php
-		echo "Qu&eacute;: ".get_the_title()."<br>";
-		echo "Hora: ".$time."<br>";
-		echo "Cu&aacute;ndo: ".$dateinit;
+		echo "Qu&eacute;: ".$tit."<br>";
+		if ( $time != '' ) echo "Hora: ".$time."<br>";
+		echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format );
 		echo "<br>Lugar: ". $place;
 		if (!empty($dateend)) {echo "<br>Fecha cierre: ". $dateend;}
 		echo "<br>Organiza: ". $organizer."<br><br>";
