@@ -40,11 +40,13 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 		</div>
 		<?php
 			the_content();
-			
-			echo '<h3>Informaci&oacute;n extendida</h3>';
 			$entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
+			
+			if ( $relacion_barrio != '' || $relacion_ayuntamiento != '' || $entries != '')
+				echo '<h3>Informaci&oacute;n extendida</h3>';
+			
 			foreach ( (array) $entries as $key => $entry ) {
-					$url_text = $url_text = '';
+					$url_text = $url = '';
 					if ( isset( $entry['url_text'] ) )
 						  $url_text = $entry['url_text'];
 					if ( isset( $entry['url'] ) )
@@ -54,7 +56,8 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 			
 			if ( $relacion_barrio != '' ) echo "<h4>Relaci&oacute;n con el barrio</h4>".$relacion_barrio;
 			if ( $relacion_ayuntamiento != '' ) echo "<h4>Relaci&oacute;n con temas promovidos por el Ayuntamiento</h4>".$relacion_ayuntamiento;
-			
+			if ( $relacion_barrio != '' || $relacion_ayuntamiento != '' || $entries != '')
+				echo "<hr>";
 
 			$spacious_tag_list = get_the_tag_list( '', '&nbsp;&nbsp;&nbsp;&nbsp;', '' );
 			if( !empty( $spacious_tag_list ) ) {
