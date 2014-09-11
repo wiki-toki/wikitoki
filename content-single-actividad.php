@@ -7,12 +7,18 @@
  * @since Spacious 1.0
  */
 $post_id = $post->ID;
-
-$place = get_post_meta( $post_id, '_act_place', true );
-$time = get_post_meta( $post_id, '_act_time', true );
-$dateinit = get_post_meta( $post_id, '_act_date-init', true );
-$dateend = get_post_meta( $post_id, '_act_date-end', true );
-$organizer = get_post_meta( $post_id, '_act_organizador', true );
+$prefixact = '_act_';
+$tit = get_the_title();
+$place = get_post_meta( $post_id, $prefixact.'place', true );
+$time = get_post_meta( $post_id, $prefixact.'time', true );
+$dateinit = get_post_meta( $post_id, $prefixact.'date-init', true );
+$dateinit_format = strtotime($dateinit);
+$dateend = get_post_meta( $post_id, $prefixact.'date-end', true );
+$dateend_format = strtotime($dateend);
+$organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
+$numero_asistentes = get_post_meta( $post_id, $prefixact.'numero-asistentes', true );
+$relacion_barrio = get_post_meta( $post_id, $prefixact.'relacion-barrio', true );
+$relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamiento', true );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -21,17 +27,37 @@ $organizer = get_post_meta( $post_id, '_act_organizador', true );
 		<div>
 		<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br><br>
 		<?php
-			echo "<strong>Datos de la actividad</strong><br>";
-			echo "Qu&eacute;: ".get_the_title()."<br>";
-			echo "Hora: ".$time."<br>";
-			echo "Cu&aacute;ndo: ".$dateinit;
-			echo "<br>Lugar: ". $place;
-			if (!empty($dateend)) {echo "<br>Fecha cierre: ". $dateend;}
-			echo "<br>Organiza: ". $organizer."<br><br>";
+			echo "<p><strong>Datos de la actividad</strong><br>";
+			if ( $tit!= '' ) echo "Qu&eacute;: ".$tit."<br>";
+			if ( $place != '' ) echo "Lugar: ". $place."<br>";
+			if ( $time != '' ) echo "Hora: ".$time."<br>";
+			if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format )."<br>";
+			if (!empty($dateend)) {echo "Fecha cierre: ".date( 'd/M/Y', $dateend_format )."<br>";}
+			echo "Organiza: ". $organizer."<br>";
+			if ( $numero_asistentes != '' ) echo "N&uacute;mero de asistentes: ".$numero_asistentes."<br>";
+			echo "</p>";
 		?>
+		
+		
+		
 		</div>
 		<?php
 			the_content();
+			
+			echo '<h3>Informaci&oacute;n extendida</h3>';
+			$entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
+			foreach ( (array) $entries as $key => $entry ) {
+					$url_text = $url_text = '';
+					if ( isset( $entry['url_text'] ) )
+						  $url_text = $entry['url_text'];
+					if ( isset( $entry['url'] ) )
+						  $url = $entry['url'];
+					echo '<a href="' .$url. '">' .$url_text. '</a><br>'; 
+			}
+			
+			if ( $relacion_barrio != '' ) echo "<h4>Relaci&oacute;n con el barrio</h4>".$relacion_barrio;
+			if ( $relacion_ayuntamiento != '' ) echo "<h4>Relaci&oacute;n las actividades ha tenido con temas promovidos por el Ayuntamiento</h4>".$relacion_ayuntamiento;
+			
 
 			$spacious_tag_list = get_the_tag_list( '', '&nbsp;&nbsp;&nbsp;&nbsp;', '' );
 			if( !empty( $spacious_tag_list ) ) {
