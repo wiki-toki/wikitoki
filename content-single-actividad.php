@@ -53,7 +53,7 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 			}
 			
 			if ( $relacion_barrio != '' ) echo "<h4>Relaci&oacute;n con el barrio</h4>".$relacion_barrio;
-			if ( $relacion_ayuntamiento != '' ) echo "<h4>Relaci&oacute;n las actividades ha tenido con temas promovidos por el Ayuntamiento</h4>".$relacion_ayuntamiento;
+			if ( $relacion_ayuntamiento != '' ) echo "<h4>Relaci&oacute;n con temas promovidos por el Ayuntamiento</h4>".$relacion_ayuntamiento;
 			
 
 			$spacious_tag_list = get_the_tag_list( '', '&nbsp;&nbsp;&nbsp;&nbsp;', '' );
