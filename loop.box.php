@@ -28,12 +28,10 @@ $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 <div>
 	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
 	<?php
-		echo "Qu&eacute;: ".$tit."<br>";
-		if ( $time != '' ) echo "Hora: ".$time."<br>";
-		echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format );
-		echo "<br>Lugar: ". $place;
-		if (!empty($dateend)) {echo "<br>Fecha cierre: ". $dateend;}
-		echo "<br>Organiza: ". $organizer."<br><br>";
+		//if ( $time != '' ) echo "Hora: ".$time."<br>";
+		if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format )."<br>";
+		if ( $place != '' ) echo "Lugar: ". $place."<br>";
+		echo "Organiza: ". $organizer."<br><br>";
 	?>
 </div>
 		<?php
