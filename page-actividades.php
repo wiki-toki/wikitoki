@@ -32,7 +32,10 @@
 					 ?>
 					<?php //Loop though Actividades
 					$args = array(
-					 'post_type' => 'actividad', //sets posts type
+						'post_type' => 'actividad', //sets posts type
+						'meta_key'  => '_act_date-init',
+						'orderby'  => 'meta_value_num',
+						'order'     => 'DESC'
 						);
 					if ( $paged > 1 ) {
 					 $args['paged'] = $paged;
