@@ -39,12 +39,13 @@
 						}
  
 					$my_query = new WP_Query($args);
+					$wp_count = $my_query->post_count; //The number of posts being displayed
 
 					if ($my_query->have_posts() ) : 
 					$count = 0;
 					while ( $my_query->have_posts()) : $my_query->the_post(); 
 					$count++;
-					if ( $count == 1 ) { echo "<div class='row'>"; } ?>
+					if ( $count == 1 || $count % 3 == 1 ) { echo "<div class='row'>"; } ?>
 					
 					<?php global $wp_query;
 					$wp_query->in_the_loop = true;
@@ -52,7 +53,7 @@
 						<div id="post-<?php the_ID(); ?>" <?php post_class('box col-md-4'); ?>>
 							<?php include("loop.box.php")?>
 						</div>
-					<?php if ( $count == 3 ) { echo "</div><!-- .row -->"; $count = 0; }?>
+					<?php if ( $count % 3 == 0 || $count == $wp_count ) { echo "</div><!-- .row -->"; }?>
 					<?php endwhile; else: ?>
 					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
