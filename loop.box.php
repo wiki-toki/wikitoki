@@ -9,7 +9,6 @@ $tit = get_the_title();
 $place = get_post_meta( $post_id, $prefixact.'place', true );
 $time = get_post_meta( $post_id, $prefixact.'time', true );
 $dateinit = get_post_meta( $post_id, $prefixact.'date-init', true );
-$dateinit_format = strtotime($dateinit);
 $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 ?>
 
@@ -29,7 +28,7 @@ $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
 	<?php
 		//if ( $time != '' ) echo "Hora: ".$time."<br>";
-		if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format )."<br>";
+		if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit )."<br>";
 		if ( $place != '' ) echo "Lugar: ". $place."<br>";
 		echo "Organiza: ". $organizer."<br><br>";
 	?>

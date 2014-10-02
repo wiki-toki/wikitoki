@@ -114,13 +114,13 @@ function sample_metaboxes( $meta_boxes ) {
 				'name' => 'Fecha de inicio',
 				'desc' => 'Seleccion la fecha',
 				'id' => $prefixact . 'date-init',
-				'type' => 'text_date'
+				'type' => 'text_datetime_timestamp'
 			),
 			array(
 				'name' => 'Fecha final',
 				'desc' => 'Seleccion la fecha',
 				'id' => $prefixact . 'date-end',
-				'type' => 'text_date',
+				'type' => 'text_datetime_timestamp',
 			),
 			array(
 				'name' => 'Organizador',

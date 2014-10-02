@@ -12,9 +12,7 @@ $tit = get_the_title();
 $place = get_post_meta( $post_id, $prefixact.'place', true );
 $time = get_post_meta( $post_id, $prefixact.'time', true );
 $dateinit = get_post_meta( $post_id, $prefixact.'date-init', true );
-$dateinit_format = strtotime($dateinit);
 $dateend = get_post_meta( $post_id, $prefixact.'date-end', true );
-$dateend_format = strtotime($dateend);
 $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 $numero_asistentes = get_post_meta( $post_id, $prefixact.'numero-asistentes', true );
 $relacion_barrio = get_post_meta( $post_id, $prefixact.'relacion-barrio', true );
@@ -30,8 +28,8 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 				if ( $tit!= '' ) echo "Qu&eacute;: ".$tit."<br>";
 				if ( $place != '' ) echo "Lugar: ". $place."<br>";
 				if ( $time != '' ) echo "Hora: ".$time."<br>";
-				if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit_format )."<br>";
-				if ($dateend!= '') echo "Fecha cierre: ".date( 'd/M/Y', $dateend_format )."<br>";
+				if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit )."<br>";
+				if ( $dateend!= '') echo "Fecha cierre: ".date( 'd/M/Y', $dateend )."<br>";
 				echo "Tipo: ". get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' )."<br>";
 				echo "Organiza: ". $organizer."<br>";
 				if ( $numero_asistentes != '' ) echo "N&uacute;mero de asistentes: ".$numero_asistentes."<br>";
@@ -51,7 +49,7 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 						  $url_text = $entry['url_text'];
 					if ( isset( $entry['url'] ) )
 						  $url = $entry['url'];
-					echo '<a href="' .$url. '">' .$url_text. '</a><br>'; 
+					echo $url_text. ' ';
 			}
 			
 			if ( $relacion_barrio != '' ) echo "<h4>Relaci&oacute;n con el barrio</h4>".$relacion_barrio;
