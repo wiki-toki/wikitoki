@@ -9,7 +9,6 @@ $tit = get_the_title();
 $place = get_post_meta( $post_id, $prefixact.'place', true );
 $time = get_post_meta( $post_id, $prefixact.'time', true );
 $dateinit = get_post_meta( $post_id, $prefixact.'date-init', true );
-$dateinit_format = strtotime($dateinit);
 $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 $post_excerpt = get_the_excerpt();
 ?>
@@ -28,7 +27,7 @@ $post_excerpt = get_the_excerpt();
 </h4>
 <div>
 	<?php
-		echo date( 'd/M/Y', $dateinit_format );
+		echo date( 'd/M/Y', $dateinit );
 		echo " ". $organizer."<br>";
 		echo $post_excerpt;
 	?>
