@@ -18,8 +18,18 @@
 					//Loop through Actividades
 					echo '<h3 class="widget-title"><span>Actividades</span></h3>';
 					$args = array(
-					 'post_type' => 'actividad', //sets posts type
-					 'posts_per_page'=>	2,
+						'post_type' => 'actividad', //sets posts type
+						'meta_key'  => '_act_date-init',
+						'orderby'  => 'meta_value_num',
+						'order'     => 'DESC',
+						'posts_per_page'=>	3,
+						'meta_query' => array(
+							array(
+								'key' => '_act_date-init',
+								'value' => time(),
+								'compare' => '>=', //for today or in the future
+								),
+							),
 						);
  
 					$my_query = new WP_Query($args);
