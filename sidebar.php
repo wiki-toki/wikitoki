@@ -42,7 +42,7 @@
 							<?php include("loop.box.horizontal.php")?>
 						</div>
 					<?php endwhile; else: ?>
-					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					<p><?php //_e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
 					<?php echo '<p><a href="actividades">Ver m&aacute;s actividades</a></h3></p>'; ?>
 					<?php } ?>

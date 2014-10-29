@@ -30,7 +30,6 @@
 					<?php
 					do_action( 'spacious_after_post_content' );
 					 ?>
-					<h3>Pr&oacute;ximas actividades</h3>
 					<?php //Loop through Actividades
 					$args = array(
 						'post_type' => 'actividad', //sets posts type
@@ -54,6 +53,7 @@
 					$wp_count = $my_query->post_count; //The number of posts being displayed
 
 					if ($my_query->have_posts() ) :
+					echo "<h2>Pr&oacute;ximas actividades</h2>";
 					$count = 0;
 					while ( $my_query->have_posts()) : $my_query->the_post();
 					$count++;
@@ -67,10 +67,10 @@
 						</div>
 					<?php if ( $count % 3 == 0 || $count == $wp_count ) { echo "</div><!-- .row -->"; }?>
 					<?php endwhile; else: ?>
-					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					<p><?php //_e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
 					
-					<h3>Actividades pasadas</h3>
+					<h2>Archivo de actividades</h2>
 					<?php //Loop through Actividades
 					$args = array(
 						'post_type' => 'actividad', //sets posts type
