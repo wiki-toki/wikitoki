@@ -27,7 +27,9 @@ $post_excerpt = get_the_excerpt();
 </h4>
 <div>
 	<?php
-		echo date( 'd/M/Y', $dateinit );
+		if (is_home()) {
+			echo date( 'd/M/Y', $dateinit );
+		}
 		echo " ". $organizer."<br>";
 		echo $post_excerpt;
 	?>
