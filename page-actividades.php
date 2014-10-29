@@ -37,6 +37,7 @@
 						'meta_key'  => '_act_date-init',
 						'orderby'  => 'meta_value_num',
 						'order'     => 'DESC',
+						'posts_per_page'=>	-1,
 						'meta_query' => array(
 							array(
                 'key' => '_act_date-init',
@@ -62,7 +63,7 @@
 					$wp_query->in_the_loop = true;
 					?>
 						<div id="post-<?php the_ID(); ?>" <?php post_class('box col-md-4'); ?>>
-							<?php include("loop.box.php")?>
+							<?php include("loop.box.php");?>
 						</div>
 					<?php if ( $count % 3 == 0 || $count == $wp_count ) { echo "</div><!-- .row -->"; }?>
 					<?php endwhile; else: ?>
@@ -122,8 +123,33 @@
 		</div><!-- #content -->
 	</div><!-- #primary -->
 	
-	<?php spacious_sidebar_select(); ?>
+	<div id="secondary">
+			<aside id="actividades" class="widget">
+					<?php 
+					//Loop through Actividades
+					echo '<h3 class="widget-title">Actividades permanentes</h3>';
+					$args = array(
+						'post_type' => 'actividad', //sets posts type
+						'meta_key'  => '_act_permanente',
+						'meta_value' => 'sí',
+						'orderby'  => 'meta_value_num',
+						'order'     => 'DESC',
+						'posts_per_page'=>	3,
+						);
+ 
+					$my_query = new WP_Query($args);
 
-	<?php do_action( 'spacious_after_body_content' ); ?>
-
+					if ($my_query->have_posts() ) : 
+					while ( $my_query->have_posts()) : $my_query->the_post(); 
+					
+					global $wp_query; $wp_query->in_the_loop = true; ?>		
+						<div id="post-<?php the_ID(); ?>" <?php post_class(''); ?> style="clear:left;margin:0 0 10px 0;">
+							<?php include("loop.box.horizontal.php")?>
+						</div>
+					<?php endwhile; else: ?>
+					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					<?php endif; ?>
+					<?php echo '<p><a href="actividades">Ver m&aacute;s actividades</a></h3></p>'; ?>
+			</aside>
+	</div>
 <?php get_footer(); ?>
