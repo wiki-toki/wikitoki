@@ -123,6 +123,16 @@ function sample_metaboxes( $meta_boxes ) {
 				'type' => 'text_datetime_timestamp',
 			),
 			array(
+				'name'    => 'Actividad permanente',
+				'id'      => $prefixact . 'permanente',
+				'type'    => 'radio_inline',
+				'default' => 'no',
+				'options' => array(
+					  'sí' => 'sí',
+					  'no' => 'no',
+				),
+			),
+			array(
 				'name' => 'Organizador',
 				'desc' => 'Nombre del grupo o persona organizadora',
 				'id' => $prefixact . 'organizador',
