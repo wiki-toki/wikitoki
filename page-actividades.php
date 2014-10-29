@@ -30,7 +30,7 @@
 					<?php
 					do_action( 'spacious_after_post_content' );
 					 ?>
-					<h3>Actividades futuras</h3>
+					<h3>Pr&oacute;ximas actividades</h3>
 					<?php //Loop through Actividades
 					$args = array(
 						'post_type' => 'actividad', //sets posts type
@@ -127,7 +127,7 @@
 			<aside id="actividades" class="widget">
 					<?php 
 					//Loop through Actividades
-					echo '<h3 class="widget-title">Actividades permanentes</h3>';
+					echo '<h2 class="widget-title">Actividades permanentes</h2>';
 					$args = array(
 						'post_type' => 'actividad', //sets posts type
 						'meta_key'  => '_act_permanente',
@@ -149,7 +149,6 @@
 					<?php endwhile; else: ?>
 					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
-					<?php echo '<p><a href="actividades">Ver m&aacute;s actividades</a></h3></p>'; ?>
 			</aside>
 	</div>
 <?php get_footer(); ?>
