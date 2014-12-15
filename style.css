@@ -35,16 +35,16 @@ margin:0 0 0 0;
     content: " ";
 }
 .box {
-	width:33%;
+	width:29%;
 	float:left;
 	height:320px;
 	position:relative;
 	margin-bottom: 12px;
+	padding-right:4%;
 }
 #actividades h4, .actividad h4 {
 	padding-bottom: 0	;
 	padding-bottom: 0px;
 	font-size: 20px;
-	padding-right: 5px !important;
 	line-height:24px;
 }
