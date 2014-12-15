@@ -7,7 +7,7 @@ $post_id = $post->ID;
 $prefixact = '_act_';
 $tit = get_the_title();
 $place = get_post_meta( $post_id, $prefixact.'place', true );
-$time = get_post_meta( $post_id, $prefixact.'time', true );
+$time = get_post_meta( $post_id, $prefixact.'time', true );//TODO to be erased
 $dateinit = get_post_meta( $post_id, $prefixact.'date-init', true );
 $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 ?>
@@ -25,13 +25,13 @@ $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 	<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
 </h4>
 <div>
-	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span><br>
 	<?php
 		//if ( $time != '' ) echo "Hora: ".$time."<br>";
 		if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit )."<br>";
 		if ( $place != '' ) echo "Lugar: ". $place."<br>";
 		echo "Organiza: ". $organizer."<br><br>";
 	?>
+	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span>
 </div>
 		<?php
 			if($categories){
