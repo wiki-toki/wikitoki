@@ -53,7 +53,7 @@
 					$wp_count = $my_query->post_count; //The number of posts being displayed
 
 					if ($my_query->have_posts() ) :
-					echo "<h2>Pr&oacute;ximas actividades</h2>";
+					echo "<h2>".__('Next Activities','wikitoki')."</h2>";
 					$count = 0;
 					while ( $my_query->have_posts()) : $my_query->the_post();
 					$count++;
@@ -70,7 +70,7 @@
 					<p><?php //_e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
 					
-					<h2>Archivo de actividades</h2>
+					<?php echo "<h2>".__('Activities archive','wikitoki')."</h2>"; ?>
 					<?php //Loop through Actividades
 					$args = array(
 						'post_type' => 'actividad', //sets posts type
@@ -127,7 +127,7 @@
 			<aside id="actividades" class="widget">
 					<?php 
 					//Loop through Actividades
-					echo '<h2 class="widget-title">Actividades permanentes</h2>';
+					echo '<h2 class="widget-title">'.__('Periodical activities','wikitoki').'</h2>';
 					$args = array(
 						'post_type' => 'actividad', //sets posts type
 						'meta_key'  => '_act_permanente',

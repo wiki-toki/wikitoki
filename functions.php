@@ -1,4 +1,9 @@
 <?php
+add_action('after_setup_theme', 'my_wikitoki_setup');
+function my_wikitoki_setup(){
+  load_child_theme_textdomain('wikitoki', get_stylesheet_directory() . '/languages');
+}
+
 // custom post types
 add_action( 'init', 'create_post_type', 0 );
 
