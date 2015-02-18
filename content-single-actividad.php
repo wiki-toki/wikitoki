@@ -17,6 +17,8 @@ $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 $numero_asistentes = get_post_meta( $post_id, $prefixact.'numero-asistentes', true );
 $relacion_barrio = get_post_meta( $post_id, $prefixact.'relacion-barrio', true );
 $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamiento', true );
+$activity_summary = get_post_meta( $post_id, $prefixact.'resumen-actividad', true );
+$entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -38,18 +40,20 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 		</div>
 		<?php
 			the_content();
-			$entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
 			
 			if ( !empty($relacion_barrio) || !empty($relacion_ayuntamiento) || !empty($entries) )
 				echo "<h3>".__('Extended infromation','wikitoki')."</h3>";
 			
-			foreach ( (array) $entries as $key => $entry ) {
-					$url_text = $url = '';
-					if ( isset( $entry['url_text'] ) )
-						  $url_text = $entry['url_text'];
-					if ( isset( $entry['url'] ) )
-						  $url = $entry['url'];
-					echo $url_text. ' ';
+			if ( !empty($entries) ) {
+				echo "<strong>".__('Links con información relacionada','wikitoki')."</strong><br/>";
+				foreach ( $entries as $key => $entry ) {
+						$url_text = $url = '';
+						if ( isset( $entry['url_text'] ) )
+								$url_text = $entry['url_text'];
+						if ( isset( $entry['url'] ) )
+								$url = $entry['url'];
+						echo "<a href='". $url ."'>". $url_text ."</a><br>";
+				}
 			}
 			
 			if ( $relacion_barrio != '' ) echo "<h4>".__('Relationship with the neighborhood','wikitoki')."</h4>".$relacion_barrio;
