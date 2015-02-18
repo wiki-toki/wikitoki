@@ -13,9 +13,18 @@ Version:        0.1
     border-radius: 0;
     float: none;
 }
+
 .type-actividad img {
 margin:0 0 0 0;
 }
+.type-actividad h2, .type-actividad h3, .type-actividad h4  {
+	margin-top:20px;
+}
+.type-actividad h3  {
+	font-size: 20px;
+	line-height: 26px;
+}
+
 .row {
     clear: both;
     height:450px;

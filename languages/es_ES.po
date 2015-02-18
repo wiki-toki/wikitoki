@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wikitoki\n"
-"POT-Creation-Date: 2015-02-18 22:48+0100\n"
-"PO-Revision-Date: 2015-02-18 22:49+0100\n"
+"POT-Creation-Date: 2015-02-18 23:24+0100\n"
+"PO-Revision-Date: 2015-02-18 23:24+0100\n"
 "Last-Translator: pablo <pablo@basurama.org>\n"
 "Language-Team: wikitoki <info@wikitoki.org>\n"
 "Language: es\n"
@@ -18,12 +18,12 @@ msgstr ""
 "spacious-child\n"
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/page-actividades.php:18
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:72
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:75
 msgid "Pages:"
 msgstr ""
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/page-actividades.php:27
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:90
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:93
 msgid "Edit"
 msgstr ""
 
@@ -192,160 +192,173 @@ msgid ""
 "Ayuntamiento"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:231
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:192
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:40
+msgid "Resumen de la actividad"
+msgstr ""
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:240
 msgid "Información"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:289
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:298
 msgid "Busca entre los tipos de usuario"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:290
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:299
 msgid "Tipos de usuario populares"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:291
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:300
 msgid "Todos los tipos de usuario"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:292
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:301
 msgid "Tipo de usuario padre"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:293
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:302
 msgid "Editar tipo de usuario"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:294
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:324
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:303
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:333
 msgid "Actualizar"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:295
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:304
 msgid "Añadir nuevo tipo de usuario"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:296
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:305
 msgid "nuevo tipo de usuario"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:319
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:328
 msgid "Busca entre los grupos"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:320
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:329
 msgid "Grupos populares"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:321
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:330
 msgid "Todos los grupos"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:322
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:331
 msgid "Grupo padre"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:323
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:332
 msgid "Editar grupo"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:325
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:334
 msgid "Añadir nuevo grupo"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:326
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:335
 msgid "Nuevo tipo de grupo"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:422
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:431
 msgid "Tipo de usuario"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:425
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:434
 msgid "Elige uno de los tipos"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:437
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:446
 msgid "No hay usuarios de este tipo."
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:456
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:465
 msgid "Grupo al que pertenece el usuario"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:459
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:468
 msgid "Elige uno de los grupos"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:471
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:480
 msgid "No hay grupos de usuario."
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:27
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:24
 msgid "Activity data"
 msgstr "Datos de la actividad"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:28
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:25
 msgid "What"
 msgstr "Qué"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:29
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:26
 msgid "Place"
 msgstr "Lugar"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:30
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:27
 msgid "Hour"
 msgstr "Hora"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:31
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:28
 msgid "Start date"
 msgstr "Fecha de inicio"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:32
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:29
 msgid "End date"
 msgstr "Fecha de cierre"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:33
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:30
 msgid "Type"
 msgstr "Tipo"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:34
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:31
 msgid "Organized by"
 msgstr "Organiza"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:35
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:32
 msgid "Number of people"
 msgstr "Número de personas"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:44
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:38
+msgid "Activity announcement"
+msgstr "Anuncio de la actividad"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:45
 msgid "Extended infromation"
 msgstr "Información extendida"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:55
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:48
+msgid "Links con información relacionada"
+msgstr ""
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:59
 msgid "Relationship with the neighborhood"
 msgstr "Relación con el barrio"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:56
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:60
 msgid "Relation with topics promoted by the Municipality"
 msgstr "Relación con temas promovidos por el ayuntamiento"
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:65
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:68
 msgid "Tagged on: "
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:88
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:91
 msgid "No Comments"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:88
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:91
 msgid "1 Comment"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:88
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:91
 msgid "% Comments"
 msgstr ""
 
-#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:88
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:91
 msgid "Comments Off"
 msgstr ""
 

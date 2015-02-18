@@ -1,11 +1,5 @@
 <?php
-/**
- * The template used for displaying page content in page.php
- *
- * @package ThemeGrill
- * @subpackage Spacious
- * @since Spacious 1.0
- */
+//Sets the variables
 $post_id = $post->ID;
 $prefixact = '_act_';
 $tit = get_the_title();
@@ -19,6 +13,7 @@ $relacion_barrio = get_post_meta( $post_id, $prefixact.'relacion-barrio', true )
 $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamiento', true );
 $activity_summary = get_post_meta( $post_id, $prefixact.'resumen-actividad', true );
 $entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
+$the_content = get_the_content();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -39,13 +34,22 @@ $entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
 			?>
 		</div>
 		<?php
-			the_content();
+			//Displays content
+			if (empty($activity_summary)) { // if activity summary is empty, display only content (announcement)
+				the_content();
+			} else { // if activity summary is written, display it first!
+				echo "<h2>".__('Resumen de la actividad','wikitoki')."</h2>";
+				echo $activity_summary;
+				echo "<h2>".__('Activity announcement','wikitoki')."</h2>";
+				the_content();
+			}
 			
+			//Extended information
 			if ( !empty($relacion_barrio) || !empty($relacion_ayuntamiento) || !empty($entries) )
-				echo "<h3>".__('Extended infromation','wikitoki')."</h3>";
+				echo "<h2>".__('Extended infromation','wikitoki')."</h2>";
 			
 			if ( !empty($entries) ) {
-				echo "<strong>".__('Links con información relacionada','wikitoki')."</strong><br/>";
+				echo "<h3>".__('Links con información relacionada','wikitoki')."</h3>";
 				foreach ( $entries as $key => $entry ) {
 						$url_text = $url = '';
 						if ( isset( $entry['url_text'] ) )
@@ -56,10 +60,9 @@ $entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
 				}
 			}
 			
-			if ( $relacion_barrio != '' ) echo "<h4>".__('Relationship with the neighborhood','wikitoki')."</h4>".$relacion_barrio;
-			if ( $relacion_ayuntamiento != '' ) echo "<h4>".__('Relation with topics promoted by the Municipality','wikitoki')."</h4>".$relacion_ayuntamiento;
-			if ( $relacion_barrio != '' || $relacion_ayuntamiento != '' || $entries != '')
-			echo "<hr>";
+			if ( $relacion_barrio != '' ) echo "<h3>".__('Relationship with the neighborhood','wikitoki')."</h3>".$relacion_barrio;
+			if ( $relacion_ayuntamiento != '' ) echo "<h3>".__('Relation with topics promoted by the Municipality','wikitoki')."</h3>".$relacion_ayuntamiento;
+			if ( $relacion_barrio != '' || $relacion_ayuntamiento != '' || $entries != '') echo "<hr>";
 
 			$spacious_tag_list = get_the_tag_list( '', '&nbsp;&nbsp;&nbsp;&nbsp;', '' );
 			if( !empty( $spacious_tag_list ) ) {

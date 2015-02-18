@@ -180,12 +180,21 @@ function sample_metaboxes( $meta_boxes ) {
 				)
 			),
 			array(
-				'name' => __( 'Qué relación las actividades ha tenido con temas promovidos por el Ayuntamiento','montera34' ),
+				'name' => __( 'Qué relación las actividades ha tenido con temas promovidos por el Ayuntamiento','wikitoki' ),
 				'desc' => 'Escribe un párrafo',
 				'id' => $prefixact . 'relacion-ayuntamiento',
 				'type' => 'wysiwyg',
 				'options' => array(
 					'textarea_rows' => get_option('default_post_edit_rows', 4),
+				)
+			),
+			array(
+				'name' => __( 'Resumen de la actividad','wikitoki' ),
+				'desc' => '',
+				'id' => $prefixact . 'resumen-actividad',
+				'type' => 'wysiwyg',
+				'options' => array(
+					'textarea_rows' => get_option('default_post_edit_rows', 15),
 				)
 			),
 		),
