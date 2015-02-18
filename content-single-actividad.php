@@ -84,7 +84,7 @@ $the_content = get_the_content();
 		?>
 	</div>
 
-	<footer class="entry-meta-bar clearfix">  			
+	<footer class="entry-meta-bar clearfix" style="margin-bottom: 20px;">
 		<div class="entry-meta clearfix">
 			<span class="by-author author vcard"><a class="url fn n" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a></span>
 			<span class="date updated"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( get_the_time() ); ?>"><?php the_time( get_option( 'date_format' ) ); ?></a></span>
