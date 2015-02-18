@@ -24,15 +24,15 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 	<div class="entry-content clearfix">
 		<div>
 			<?php
-				echo "<p><strong>Datos de la actividad</strong><br>";
-				if ( $tit!= '' ) echo "Qu&eacute;: ".$tit."<br>";
-				if ( $place != '' ) echo "Lugar: ". $place."<br>";
-				if ( $time != '' ) echo "Hora: ".$time."<br>";
-				if ( $dateinit != '' ) echo "Cu&aacute;ndo: ".date( 'd/M/Y', $dateinit )."<br>";
-				if ( $dateend!= '') echo "Fecha cierre: ".date( 'd/M/Y', $dateend )."<br>";
-				echo "Tipo: ". get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' )."<br>";
-				echo "Organiza: ". $organizer."<br>";
-				if ( $numero_asistentes != '' ) echo "N&uacute;mero de asistentes: ".$numero_asistentes."<br>";
+				echo "<p><strong>".__('Activity data','wikitoki')."</strong><br>";
+				if ( $tit!= '' ) echo __('What','wikitoki').": ".$tit."<br>";
+				if ( $place != '' ) echo __('Place','wikitoki').": ". $place."<br>";
+				if ( $time != '' ) echo __('Hour','wikitoki').": ".$time."<br>";
+				if ( $dateinit != '' ) echo __('Start date','wikitoki').": ".date( 'd/M/Y', $dateinit )."<br>";
+				if ( $dateend!= '') echo __('End date','wikitoki').": ".date( 'd/M/Y', $dateend )."<br>";
+				echo __('Type').": ". get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' )."<br>";
+				echo __('Organized by','wikitoki').": ". $organizer."<br>";
+				if ( $numero_asistentes != '' ) echo __('Number of people','wikitoki').": ".$numero_asistentes."<br>";
 				echo "</p>";
 			?>
 		</div>
@@ -40,8 +40,8 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 			the_content();
 			$entries = get_post_meta( get_the_ID(), $prefixact . 'mas_info_url', true );
 			
-			if ( $relacion_barrio != '' || $relacion_ayuntamiento != '' || $entries != '')
-				echo '<h3>Informaci&oacute;n extendida</h3>';
+			if ( !empty($relacion_barrio) || !empty($relacion_ayuntamiento) || !empty($entries) )
+				echo "<h3>".__('Extended infromation','wikitoki')."</h3>";
 			
 			foreach ( (array) $entries as $key => $entry ) {
 					$url_text = $url = '';
@@ -52,10 +52,10 @@ $relacion_ayuntamiento = get_post_meta( $post_id, $prefixact.'relacion-ayuntamie
 					echo $url_text. ' ';
 			}
 			
-			if ( $relacion_barrio != '' ) echo "<h4>Relaci&oacute;n con el barrio</h4>".$relacion_barrio;
-			if ( $relacion_ayuntamiento != '' ) echo "<h4>Relaci&oacute;n con temas promovidos por el Ayuntamiento</h4>".$relacion_ayuntamiento;
+			if ( $relacion_barrio != '' ) echo "<h4>".__('Relationship with the neighborhood','wikitoki')."</h4>".$relacion_barrio;
+			if ( $relacion_ayuntamiento != '' ) echo "<h4>".__('Relation with topics promoted by the Municipality','wikitoki')."</h4>".$relacion_ayuntamiento;
 			if ( $relacion_barrio != '' || $relacion_ayuntamiento != '' || $entries != '')
-				echo "<hr>";
+			echo "<hr>";
 
 			$spacious_tag_list = get_the_tag_list( '', '&nbsp;&nbsp;&nbsp;&nbsp;', '' );
 			if( !empty( $spacious_tag_list ) ) {

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wikitoki\n"
-"POT-Creation-Date: 2015-02-18 02:33+0100\n"
-"PO-Revision-Date: 2015-02-18 02:33+0100\n"
+"POT-Creation-Date: 2015-02-18 22:48+0100\n"
+"PO-Revision-Date: 2015-02-18 22:49+0100\n"
 "Last-Translator: pablo <pablo@basurama.org>\n"
 "Language-Team: wikitoki <info@wikitoki.org>\n"
 "Language: es\n"
@@ -280,6 +280,54 @@ msgstr ""
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/functions.php:471
 msgid "No hay grupos de usuario."
 msgstr ""
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:27
+msgid "Activity data"
+msgstr "Datos de la actividad"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:28
+msgid "What"
+msgstr "Qué"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:29
+msgid "Place"
+msgstr "Lugar"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:30
+msgid "Hour"
+msgstr "Hora"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:31
+msgid "Start date"
+msgstr "Fecha de inicio"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:32
+msgid "End date"
+msgstr "Fecha de cierre"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:33
+msgid "Type"
+msgstr "Tipo"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:34
+msgid "Organized by"
+msgstr "Organiza"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:35
+msgid "Number of people"
+msgstr "Número de personas"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:44
+msgid "Extended infromation"
+msgstr "Información extendida"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:55
+msgid "Relationship with the neighborhood"
+msgstr "Relación con el barrio"
+
+#: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:56
+msgid "Relation with topics promoted by the Municipality"
+msgstr "Relación con temas promovidos por el ayuntamiento"
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:65
 msgid "Tagged on: "

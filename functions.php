@@ -11,8 +11,8 @@ function create_post_type() {
 	// ACTIVIDAD
 	register_post_type( 'actividad', array(
 		'labels' => array(
-			'name' => __( 'Actividades' ),
-			'singular_name' => __( 'Actividad' ),
+			'name' => __( 'Activities' ),
+			'singular_name' => __( 'Activity' ),
 			'add_new_item' => __( 'Añadir una actividad' ),
 			'edit' => __( 'Editar' ),
 			'edit_item' => __( 'Editar actividad' ),
