@@ -39,7 +39,7 @@ $the_content = get_the_content();
 				the_content();
 			} else { // if activity summary is written, display it first!
 				echo "<h2>".__('Resumen de la actividad','wikitoki')."</h2>";
-				echo $activity_summary;
+				echo wikitoki_get_wysiwyg_output( $prefixact.'resumen-actividad', $post_id );
 				echo "<h2>".__('Activity announcement','wikitoki')."</h2>";
 				the_content();
 			}
