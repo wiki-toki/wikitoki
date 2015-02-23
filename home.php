@@ -1,6 +1,6 @@
 <?php 
 /**
- * Theme Index Section for our theme.
+ * Theme home Section for our theme.
  *
  * @package ThemeGrill
  * @subpackage Spacious
@@ -14,14 +14,23 @@
 
 	<div id="primary">
 		<div id="content" class="clearfix">
+			<?php
+			$args = array(
+				'post_type' => array( 'post', 'actividad' )
+				);
+			$my_query = new WP_Query($args);
+			?>			
+			<?php if ( $my_query->have_posts() ) : ?>
 
-			<?php if ( have_posts() ) : ?>
+				<?php while ( $my_query->have_posts() ) : $my_query->the_post(); ?>
 
-				<?php while ( have_posts() ) : the_post(); ?>
-
-					<?php	$format = spacious_posts_listing_display_type_select(); ?>
-
-					<?php get_template_part( 'content', $format ); ?>
+					<?php
+					if ( get_post_type() == 'actividad') {
+						get_template_part( 'content', get_post_type() ); 
+					} else {
+						get_template_part( 'content', get_post_format() ); 
+					}
+						?>
 
 				<?php endwhile; ?>
 
@@ -41,3 +50,6 @@
 	<?php do_action( 'spacious_after_body_content' ); ?>
 
 <?php get_footer(); ?>
+
+
+
