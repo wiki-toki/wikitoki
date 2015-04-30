@@ -27,7 +27,7 @@ $the_content = get_the_content();
 				if ( $time != '' ) echo __('Hour','wikitoki').": ".$time."<br>";
 				if ( $dateinit != '' ) echo __('Start date','wikitoki').": ".date( 'd/M/Y', $dateinit )."<br>";
 				if ( $dateend!= '') echo __('End date','wikitoki').": ".date( 'd/M/Y', $dateend )."<br>";
-				echo __('Type').": ". get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' )."<br>";
+				echo __('Type','wikitoki').": ". get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' )."<br>";
 				echo __('Organized by','wikitoki').": ". $organizer."<br>";
 				if ( $numero_asistentes != '' ) echo __('Number of people','wikitoki').": ".$numero_asistentes."<br>";
 				echo "</p>";
@@ -46,10 +46,10 @@ $the_content = get_the_content();
 			
 			//Extended information
 			if ( !empty($relacion_barrio) || !empty($relacion_ayuntamiento) || !empty($entries) )
-				echo "<h2>".__('Extended infromation','wikitoki')."</h2>";
+				echo "<h2>".__('Extended information','wikitoki')."</h2>";
 			
 			if ( !empty($entries) ) {
-				echo "<h3>".__('Links con información relacionada','wikitoki')."</h3>";
+				echo "<h3>".__('Links with related information','wikitoki')."</h3>";
 				foreach ( $entries as $key => $entry ) {
 						$url_text = $url = '';
 						if ( isset( $entry['url_text'] ) )

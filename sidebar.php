@@ -16,7 +16,7 @@
 					<?php 
 					if (is_home()){
 					//Loop through Actividades
-					echo '<h3 class="widget-title"><span>Actividades</span></h3>';
+					echo '<h3 class="widget-title"><span>'.__("Activities","wikitoki").'</span></h3>';
 					$args = array(
 						'post_type' => 'actividad', //sets posts type
 						'meta_key'  => '_act_date-init',
@@ -44,7 +44,7 @@
 					<?php endwhile; else: ?>
 					<p><?php //_e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
-					<?php echo '<p><a href="actividades">Ver m&aacute;s actividades</a></h3></p>'; ?>
+					<?php echo '<p><a href="actividades">'.__("Show more activities","wikitoki").'</a></h3></p>'; ?>
 					<?php } ?>
 			</aside>
 	<?php do_action( 'spacious_before_sidebar' ); ?>

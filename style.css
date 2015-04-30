@@ -57,3 +57,20 @@ margin:0 0 0 0;
 	font-size: 20px;
 	line-height:24px;
 }
+
+.actividad .entry-meta {
+    border: 1px solid #EAEAEA;
+    font-size: 14px;
+    color: #666;
+    font-family: "Lato",sans-serif;
+    margin: 0px 0px 20px;
+}
+.actividad .entry-meta .read-more-link {
+    padding: 5px 10px;
+    background-color: #0FBE7C;
+    float: right;
+    border-right: medium none;
+}
+.actividad .entry-meta a.read-more {
+    color: #FFF;
+}
