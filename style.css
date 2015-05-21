@@ -27,7 +27,7 @@ margin:0 0 0 0;
 
 .row {
     clear: both;
-    height:450px;
+    height:400px;
 }
 .row:after {
     clear: both;
@@ -74,3 +74,13 @@ margin:0 0 0 0;
 .actividad .entry-meta a.read-more {
     color: #FFF;
 }
+
+/* menu orbita */
+#menu-orbita.main-navigation {
+	background-color: #EEE;
+	padding: 0 0;
+	display: block;
+	width: 100%;
+	text-align: right;
+}
+

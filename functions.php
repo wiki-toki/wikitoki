@@ -562,3 +562,13 @@ function wikitoki_get_wysiwyg_output( $meta_key, $post_id = 0 ) {
 
     return $content;
 }
+
+//Adds Orbita menu
+function register_my_menus() {
+  register_nav_menus(
+    array(
+		'orbita' => 'Orbita',
+		)
+  );
+}
+add_action( 'init', 'register_my_menus' );

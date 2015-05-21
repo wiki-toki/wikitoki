@@ -120,7 +120,7 @@ wp_head();
 							<?php
 							if( '' != spacious_header_title() ) {
 							?>
-						   	<h1 class="header-post-title-class"><?php echo spacious_header_title(); ?></h1>
+						   	<h1 class="header-post-title-class"><?php the_title(); ?></h1>
 						   <?php
 							}
 							?>
@@ -132,6 +132,15 @@ wp_head();
 			}
 	   	}
 		?>
+	 		<nav id="menu-orbita" class="main-navigation" role="navigation">
+	 			<span style="float: left;padding: 16px 0px 0px 20px;font-weight: bold;">&Oacute;rbita: </span>
+				<?php
+				$defaults = array(
+					'theme_location'  => 'orbita',
+				);
+				wp_nav_menu( $defaults );
+				?>
+			</nav>
 	</header>
 	<?php do_action( 'spacious_after_header' ); ?>
 	<?php do_action( 'spacious_before_main' ); ?>
