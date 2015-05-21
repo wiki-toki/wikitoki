@@ -133,7 +133,7 @@ wp_head();
 	   	}
 		?>
 	 		<nav id="menu-orbita" class="main-navigation" role="navigation">
-	 			<span style="float: left;padding: 16px 0px 0px 20px;font-weight: bold;">&Oacute;rbita: </span>
+	 			<!-- hides title <span style="float: left;padding: 16px 0px 0px 20px;font-weight: bold;">&Oacute;rbita: </span> -->
 				<?php
 				$defaults = array(
 					'theme_location'  => 'orbita',
