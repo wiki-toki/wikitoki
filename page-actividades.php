@@ -134,7 +134,7 @@
 						'meta_value' => 'sí',
 						'orderby'  => 'meta_value_num',
 						'order'     => 'DESC',
-						'posts_per_page'=>	3,
+						'posts_per_page'=>	-1,
 						);
  
 					$my_query = new WP_Query($args);
