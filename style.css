@@ -83,4 +83,20 @@ margin:0 0 0 0;
 	width: 100%;
 	text-align: right;
 }
+.lang-item {
+	display: inline;
+	margin-right: 15px;
+	padding:
+}
+.lang-item a {
+	color:#666;
+}
+.current-lang a {
+	font-weight:bold;
+	color:#0FBE7C;
+}
+#polylang-2 {
+  float: left;
+  margin-top: 4px;
+}
 
