@@ -77,6 +77,7 @@
 						'meta_key'  => '_act_date-init',
 						'orderby'  => 'meta_value_num',
 						'order'     => 'DESC',
+						'posts_per_page'=>	-1,
 						'meta_query' => array(
 							array(
                 'key' => '_act_date-init',
