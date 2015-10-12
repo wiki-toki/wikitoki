@@ -40,6 +40,10 @@ get_header(); ?>
 					$tit = $author_meta['first_name'];
 					$desc = nl2br($author_meta['description']);
 					$feed = $author_meta['feed'];
+					$website = $author->user_url;
+					$remove_this = array("http://","https://","www.");
+					$website_stripped = str_replace($remove_this, "", $website); //removes "http://","https://","www." from website display
+					
 					?>
 					<?php //Makes description available in every language
 					if (function_exists('pll_current_language')) { //Checks if function to check language exists
@@ -59,7 +63,7 @@ get_header(); ?>
 						<h2><a href="<?php echo get_author_posts_url( $author_ID); ?>"><?php echo $author->nickname; ?></a></h2>
 						<div style="margin-left:100px;">
 							<p>
-							Web: <a href="<?php echo $author->user_url; ?>"><?php echo $author->user_url; ?></a><br>
+							Web: <a href="<?php echo $website; ?>"><?php echo $website_stripped; ?></a><br>
 							<?php echo $desc. "\n"; ?>
 							</p>
 						</div>
