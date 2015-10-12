@@ -39,6 +39,8 @@ get_header(); ?>
 					$auth_username = $author->user_login;
 					$tit = $author_meta['first_name'];
 					$desc = nl2br($author_meta['description']);
+					$desc_eu = nl2br($author_meta['description_eu']);
+					$desc_en = nl2br($author_meta['description_en']);
 					$feed = $author_meta['feed'];
 					$website = $author->user_url;
 					$remove_this = array("http://","https://","www.");
@@ -48,11 +50,11 @@ get_header(); ?>
 					<?php //Makes description available in every language
 					if (function_exists('pll_current_language')) { //Checks if function to check language exists
 							$current_lang = pll_current_language(); //gets current language
-							if ( $current_lang == "eu" ) { //uses the approprieate description
-								$desc = nl2br($author_meta['description_eu']);
-							} else if ( $current_lang == "en" ) {
-								$desc = nl2br($author_meta['description_en']);
-							} else {
+							if ( $current_lang == "eu" ) { //uses the appropriate description
+								$desc = ($desc_eu != "") ? $desc_eu  : $desc; //if it is not translated it is displayed in Spanish
+							} else if ( $current_lang == "en"  || $desc_en != "" ) {
+								$desc = ($desc_eu != "") ? $desc_eu  : $desc;
+							} else { //in Spanish
 							}
 					} else {
 							echo "IMAP functions are not available.<br />\n";

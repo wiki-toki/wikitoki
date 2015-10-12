@@ -14,9 +14,24 @@
 			//print_r ($author_meta);
 			$tit = $author_meta['first_name'];
 			$desc = nl2br($author_meta['description']);
+			$desc_eu = nl2br($author_meta['description_eu']);
+			$desc_en = nl2br($author_meta['description_en']);
 			$feed = $author_meta['feed'];
 			$twitter = $author_meta['twitter'];
 			$facebook = $author_meta['facebook'];
+			?>
+			<?php //Makes description available in every language
+			if (function_exists('pll_current_language')) { //Checks if function to check language exists
+					$current_lang = pll_current_language(); //gets current language
+					if ( $current_lang == "eu" ) { //uses the appropriate description
+						$desc = ($desc_eu != "") ? $desc_eu  : $desc; //if it is not translated it is displayed in Spanish
+					} else if ( $current_lang == "en"  || $desc_en != "" ) {
+						$desc = ($desc_eu != "") ? $desc_eu  : $desc;
+					} else { //in Spanish
+					}
+			} else {
+					echo "IMAP functions are not available.<br />\n";
+			}
 			?>
 			<?php echo get_wp_user_avatar($author_ID, 150); ?>
 			<h2>Sobre: <?php echo $curauth->nickname; ?></h2>
