@@ -41,13 +41,26 @@ get_header(); ?>
 					$desc = nl2br($author_meta['description']);
 					$feed = $author_meta['feed'];
 					?>
+					<?php //Makes description available in every language
+					if (function_exists('pll_current_language')) { //Checks if function to check language exists
+							$current_lang = pll_current_language(); //gets current language
+							if ( $current_lang == "eu" ) { //uses the approprieate description
+								$desc = nl2br($author_meta['description_eu']);
+							} else if ( $current_lang == "en" ) {
+								$desc = nl2br($author_meta['description_en']);
+							} else {
+							}
+					} else {
+							echo "IMAP functions are not available.<br />\n";
+					}
+					?>
 					<div >
 						<div style="float:left;margin:10px"><?php echo get_wp_user_avatar($author_ID, 80); ?></div>
 						<h2><a href="<?php echo get_author_posts_url( $author_ID); ?>"><?php echo $author->nickname; ?></a></h2>
 						<div style="margin-left:100px;">
 							<p>
 							Web: <a href="<?php echo $author->user_url; ?>"><?php echo $author->user_url; ?></a><br>
-							<?php echo $desc. "\n";?>
+							<?php echo $desc. "\n"; ?>
 							</p>
 						</div>
 						<hr>
