@@ -29,7 +29,7 @@ $organizer = get_post_meta( $post_id, $prefixact.'organizador', true );
 		//if ( $time != '' ) echo "Hora: ".$time."<br>";
 		if ( $dateinit != '' ) echo __("When","wikitoki"). ": " .date( 'd/M/Y', $dateinit )."<br>";
 		if ( $place != '' ) echo __("Place","wikitoki"). ": " . $place."<br>";
-		echo __('Organized by','wikitoki'). ": " .$organizer."<br><br>";
+		if ( $organizer != '' ) echo __('Organized by','wikitoki'). ": " .$organizer."<br><br>";
 	?>
 	<span class="label "><?php echo get_the_term_list( $post->ID, 'tipo-actividad', ' ', ', ', '' ); ?></span>
 </div>
