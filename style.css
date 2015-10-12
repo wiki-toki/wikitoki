@@ -75,6 +75,11 @@ margin:0 0 0 0;
     color: #FFF;
 }
 
+#content .entry-content ul li {
+	line-height: 24px;
+	margin: 0px 0px 5px;
+}
+
 /* menu orbita */
 #menu-orbita.main-navigation {
 	background-color: #EEE;
@@ -99,4 +104,3 @@ margin:0 0 0 0;
   float: left;
   margin-top: 4px;
 }
-
