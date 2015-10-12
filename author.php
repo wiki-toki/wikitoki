@@ -34,16 +34,16 @@
 			}
 			?>
 			<?php echo get_wp_user_avatar($author_ID, 150); ?>
-			<h2>Sobre: <?php echo $curauth->nickname; ?></h2>
+			<h2><?php echo $curauth->nickname; ?></h2>
 			<dl>
 					<dt>Website</dt>
 					<dd><a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></dd>
 					<dt>Feed</dt>
 					<dd><?php echo $feed; ?></dd>
 					<dt>Twitter</dt>
-					<dd><?php echo $twitter; ?></dd>
+					<dd><a href="<?php echo $twitter; ?>">@<?php echo $twitter; ?></a></dd>
 					<dt>Facebook</dt>
-					<dd><?php echo $facebook; ?></dd>
+					<dd><a href="<?php echo $facebook; ?>"><?php echo $facebook; ?></a></dd>
 					<dt>Profile</dt>
 					<dd><?php echo $desc; ?></dd>
 			</dl>
