@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wikitoki\n"
-"POT-Creation-Date: 2015-04-30 16:34+0100\n"
-"PO-Revision-Date: 2015-04-30 16:34+0100\n"
+"POT-Creation-Date: 2015-04-30 12:12+0100\n"
+"PO-Revision-Date: 2015-04-30 12:16+0100\n"
 "Last-Translator: pablo <pablo@basurama.org>\n"
 "Language-Team: Wikitoki <pablo@basurama.org>\n"
 "Language: eu\n"
@@ -339,14 +339,12 @@ msgid "Activity announcement"
 msgstr ""
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:49
-#, fuzzy
-msgid "Extended information"
+msgid "Extended infromation"
 msgstr "Informazio gehigarria"
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:52
-#, fuzzy
-msgid "Links with related information"
-msgstr "Informazio gehigarria"
+msgid "Links con información relacionada"
+msgstr ""
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:63
 msgid "Relationship with the neighborhood"

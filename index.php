@@ -1,6 +1,6 @@
 <?php 
 /**
- * Theme home Section for our theme.
+ * Theme Index Section for our theme.
  *
  * @package ThemeGrill
  * @subpackage Spacious
@@ -18,7 +18,6 @@
 			$args = array(
 				'post_type' => array( 'post', 'actividad' )
 				);
-			$args['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 			$my_query = new WP_Query($args);
 			?>			
 			<?php if ( $my_query->have_posts() ) : ?>
