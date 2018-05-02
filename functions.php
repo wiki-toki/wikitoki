@@ -541,10 +541,10 @@ function my_save_user_group_terms( $user_id ) {
 	clean_object_term_cache( $user_id, 'user-group' );
 }
 //adds all the custom post types to the feed
-	function myfeed_request($qv) {
-    if (isset($qv['feed']) && !isset($qv['post_type']))
-        $qv['post_type'] = array('post', 'actividad');
-    return $qv;
+function myfeed_request($qv) {
+  if (isset($qv['feed']) && !isset($qv['post_type']))
+		$qv['post_type'] = array('post', 'actividad');
+  return $qv;
 }
 add_filter('request', 'myfeed_request');
 

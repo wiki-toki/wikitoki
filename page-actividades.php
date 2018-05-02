@@ -30,29 +30,82 @@
 					<?php
 					do_action( 'spacious_after_post_content' );
 					 ?>
-					<?php //Loop though Actividades
+					<?php //Loop through Actividades
 					$args = array(
-					 'post_type' => 'actividad', //sets posts type
+						'post_type' => 'actividad', //sets posts type
+						'meta_key'  => '_act_date-init',
+						'orderby'  => 'meta_value_num',
+						'order'     => 'DESC',
+						'posts_per_page'=>	-1,
+						'meta_query' => array(
+							array(
+                'key' => '_act_date-init',
+                'value' => time(),
+                'compare' => '>=', //for today or in the future
+		            ),
+        			),
 						);
 					if ( $paged > 1 ) {
 					 $args['paged'] = $paged;
 						}
  
 					$my_query = new WP_Query($args);
+					$wp_count = $my_query->post_count; //The number of posts being displayed
+
+					if ($my_query->have_posts() ) :
+					echo "<h2>".__('Next Activities','wikitoki')."</h2>";
+					$count = 0;
+					while ( $my_query->have_posts()) : $my_query->the_post();
+					$count++;
+					if ( $count == 1 || $count % 3 == 1 ) { echo "<div class='row'>"; } ?>
+					
+					<?php global $wp_query;
+					$wp_query->in_the_loop = true;
+					?>
+						<div id="post-<?php the_ID(); ?>" <?php post_class('box col-md-4'); ?>>
+							<?php include("loop.box.php");?>
+						</div>
+					<?php if ( $count % 3 == 0 || $count == $wp_count ) { echo "</div><!-- .row -->"; }?>
+					<?php endwhile; else: ?>
+					<p><?php //_e('Sorry, no posts matched your criteria.'); ?></p>
+					<?php endif; ?>
+					
+					<?php echo "<h2>".__('Activities archive','wikitoki')."</h2>"; ?>
+					<?php //Loop through Actividades
+					$args = array(
+						'post_type' => 'actividad', //sets posts type
+						'meta_key'  => '_act_date-init',
+						'orderby'  => 'meta_value_num',
+						'order'     => 'DESC',
+						'posts_per_page'=>	-1,
+						'meta_query' => array(
+							array(
+                'key' => '_act_date-init',
+                'value' => time(),
+                'compare' => '<', //before today
+		            ),
+        			),
+						);
+					if ( $paged > 1 ) {
+					 $args['paged'] = $paged;
+						}
+ 
+					$my_query = new WP_Query($args);
+					$wp_count = $my_query->post_count; //The number of posts being displayed
 
 					if ($my_query->have_posts() ) : 
 					$count = 0;
 					while ( $my_query->have_posts()) : $my_query->the_post(); 
 					$count++;
-					if ( $count == 1 ) { echo "<div class='row'>"; } ?>
+					if ( $count == 1 || $count % 3 == 1 ) { echo "<div class='row'>"; } ?>
 					
 					<?php global $wp_query;
 					$wp_query->in_the_loop = true;
 					?>		
-						<div id="post-<?php the_ID(); ?>" <?php post_class('col-md-4'); ?>	>
+						<div id="post-<?php the_ID(); ?>" <?php post_class('box col-md-4'); ?>>
 							<?php include("loop.box.php")?>
 						</div>
-					<?php if ( $count == 3 ) { echo "</div><!-- .row --><hr>"; $count = 0; }?>
+					<?php if ( $count % 3 == 0 || $count == $wp_count ) { echo "</div><!-- .row -->"; }?>
 					<?php endwhile; else: ?>
 					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 					<?php endif; ?>
@@ -71,8 +124,32 @@
 		</div><!-- #content -->
 	</div><!-- #primary -->
 	
-	<?php spacious_sidebar_select(); ?>
+	<div id="secondary">
+			<aside id="actividades" class="widget">
+					<?php 
+					//Loop through Actividades
+					echo '<h2 class="widget-title">'.__('Periodical activities','wikitoki').'</h2>';
+					$args = array(
+						'post_type' => 'actividad', //sets posts type
+						'meta_key'  => '_act_permanente',
+						'meta_value' => 'sí',
+						'orderby'  => 'meta_value_num',
+						'order'     => 'DESC',
+						'posts_per_page'=>	-1,
+						);
+ 
+					$my_query = new WP_Query($args);
 
-	<?php do_action( 'spacious_after_body_content' ); ?>
-
+					if ($my_query->have_posts() ) : 
+					while ( $my_query->have_posts()) : $my_query->the_post(); 
+					
+					global $wp_query; $wp_query->in_the_loop = true; ?>		
+						<div id="post-<?php the_ID(); ?>" <?php post_class(''); ?> style="clear:left;margin:0 0 10px 0;">
+							<?php include("loop.box.horizontal.php")?>
+						</div>
+					<?php endwhile; else: ?>
+					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
+					<?php endif; ?>
+			</aside>
+	</div>
 <?php get_footer(); ?>

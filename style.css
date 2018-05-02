@@ -8,3 +8,99 @@ Template: 			spacious
 Version:        0.1
 */
 @import url("../spacious/style.css");
+
+.avatar {
+    border-radius: 0;
+    float: none;
+}
+
+.type-actividad img {
+margin:0 0 0 0;
+}
+.type-actividad h2, .type-actividad h3, .type-actividad h4  {
+	margin-top:20px;
+}
+.type-actividad h3  {
+	font-size: 20px;
+	line-height: 26px;
+}
+
+.row {
+    clear: both;
+    height:400px;
+}
+.row:after {
+    clear: both;
+}
+.row:after {
+    clear: both;
+}
+.row:before, .row:after {
+    display: table;
+    content: " ";
+}
+.row:before, .row:after {
+    display: table;
+    content: " ";
+}
+.box {
+	width:29%;
+	float:left;
+	height:320px;
+	position:relative;
+	margin-bottom: 12px;
+	padding-right:4%;
+}
+#actividades h4, .actividad h4 {
+	padding-bottom: 0	;
+	padding-bottom: 0px;
+	font-size: 20px;
+	line-height:24px;
+}
+
+.actividad .entry-meta {
+    border: 1px solid #EAEAEA;
+    font-size: 14px;
+    color: #666;
+    font-family: "Lato",sans-serif;
+    margin: 0px 0px 20px;
+}
+.actividad .entry-meta .read-more-link {
+    padding: 5px 10px;
+    background-color: #0FBE7C;
+    float: right;
+    border-right: medium none;
+}
+.actividad .entry-meta a.read-more {
+    color: #FFF;
+}
+
+#content .entry-content ul li {
+	line-height: 24px;
+	margin: 0px 0px 5px;
+}
+
+/* menu orbita */
+#menu-orbita.main-navigation {
+	background-color: #EEE;
+	padding: 0 0;
+	display: block;
+	width: 100%;
+	text-align: right;
+}
+.lang-item {
+	display: inline;
+	margin-right: 15px;
+	padding:
+}
+.lang-item a {
+	color:#666;
+}
+.current-lang a {
+	font-weight:bold;
+	color:#0FBE7C;
+}
+#polylang-2 {
+  float: left;
+  margin-top: 4px;
+}
