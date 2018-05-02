@@ -39,7 +39,7 @@
 					<dt>Website</dt>
 					<dd><a href="<?php echo $curauth->user_url; ?>"><?php echo $curauth->user_url; ?></a></dd>
 					<dt>Feed</dt>
-					<dd><?php echo $feed; ?></dd>
+					<dd><a href="<?php echo $feed; ?>"><?php echo $feed; ?></a></dd>
 					<dt>Twitter</dt>
 					<dd><a href="<?php echo $twitter; ?>">@<?php echo $twitter; ?></a></dd>
 					<dt>Facebook</dt>
@@ -48,7 +48,7 @@
 					<dd><?php echo $desc; ?></dd>
 			</dl>
 
-			<h2>Posts de <?php echo $curauth->nickname; ?>:</h2>
+			<h2>Posts de <?php echo $curauth->nickname; ?> en Wikitoki.org:</h2>
 
 			<ul>
 			<!-- The Loop -->
@@ -80,6 +80,45 @@
 					echo '</ul>';
 			}
 			?>
+
+
+			<h2><?php
+			//Lists posts in feed from users website
+			_e( 'Posts de', 'wikitoki' ); ?> <?php echo $curauth->nickname; ?> <?php _e( 'en su blog', 'wikitoki' ); ?>.</h2>
+			 
+			<?php // Get RSS Feed(s)
+			// code from http://www.wpbeginner.com/wp-tutorials/how-to-display-any-rss-feed-on-your-wordpress-blog/
+			include_once( ABSPATH . WPINC . '/feed.php' );
+			 
+			// Get a SimplePie feed object from the specified feed source.
+			$rss = fetch_feed( $feed );
+			 
+			if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
+			 
+					// Figure out how many total items there are, but limit it to 5. 
+					$maxitems = $rss->get_item_quantity( 5 ); 
+			 
+					// Build an array of all the items, starting with element 0 (first element).
+					$rss_items = $rss->get_items( 0, $maxitems );
+			 
+			endif;
+			?>
+			 
+			<ul>
+					<?php if ( $maxitems == 0 ) : ?>
+						  <li><?php _e( 'No items', 'my-text-domain' ); ?></li>
+					<?php else : ?>
+						  <?php // Loop through each feed item and display each item as a hyperlink. ?>
+						  <?php foreach ( $rss_items as $item ) : ?>
+						      <li>
+						          <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
+						              title="<?php printf( __( 'Posted %s', 'my-text-domain' ), $item->get_date('j F Y | g:i a') ); ?>">
+						              <?php echo esc_html( $item->get_title() ); ?>
+						          </a>
+						      </li>
+						  <?php endforeach; ?>
+					<?php endif; ?>
+			</ul>
 
 			<?php
 			//Lists all the users that have the slug of this user we are displaying now as taxonomy user-group
