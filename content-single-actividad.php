@@ -46,7 +46,7 @@ $the_content = get_the_content();
 			
 			//Extended information
 			if ( !empty($relacion_barrio) || !empty($relacion_ayuntamiento) || !empty($entries) )
-				echo "<h2>".__('Extended infromation','wikitoki')."</h2>";
+				echo "<h2>".__('Extended information','wikitoki')."</h2>";
 			
 			if ( !empty($entries) ) {
 				echo "<h3>".__('Links con información relacionada','wikitoki')."</h3>";

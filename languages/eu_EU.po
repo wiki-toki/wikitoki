@@ -339,7 +339,7 @@ msgid "Activity announcement"
 msgstr ""
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:49
-msgid "Extended infromation"
+msgid "Extended information"
 msgstr "Informazio gehigarria"
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:52

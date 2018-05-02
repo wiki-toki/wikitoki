@@ -327,7 +327,7 @@ msgid "Activity announcement"
 msgstr "Anuncio de la actividad"
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:45
-msgid "Extended infromation"
+msgid "Extended information"
 msgstr "Información extendida"
 
 #: /home/pablo/sites/montera34/wp-content/themes/spacious-child/content-single-actividad.php:48
